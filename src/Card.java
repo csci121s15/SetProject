@@ -8,10 +8,21 @@ public class Card {
   
   public Card(int cardQuantity, int cardColor, int cardShading, int cardShape)
   {
-    quantity = cardQuantity;
-    color = cardColor;
-    shading = cardShading;
-    shape = cardShape;
+    quantity = (cardQuantity % 3 + 3) % 3;
+    if (quantity == 0)
+      quantity += 3;
+   
+    color = (cardColor % 3 + 3) % 3;
+    if (color == 0)
+      color += 3;
+    
+    shading = (cardShading % 3 + 3) % 3;
+    if (shading == 0)
+      shading += 3;
+    
+    shape = (cardShape % 3 + 3) % 3;
+    if (shape == 0)
+      shape += 3;
   }
   
   public int getQuantity()
