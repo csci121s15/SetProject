@@ -61,12 +61,12 @@ public class CardTest extends TestCase {
   
   public void testCardString()
   {
-    Card card1 = new Card(1, 1, 1, 1);
+    Card card1 = new Card(1, 1, 1, 2);
     Card card2 = new Card(3, 2, 3, 2);
     Card card3 = new Card(4, 5, 6, 7);
     Card card4 = new Card(0, -1, -2, -3);
     
-    assertEquals("1ROO", card1.toString());
+    assertEquals("1ROD", card1.toString());
     assertEquals("3GSD", card2.toString());
     assertEquals("1GSO", card3.toString());
     assertEquals("3GOS", card4.toString());

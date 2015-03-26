@@ -6,6 +6,8 @@ public class Card {
   private int shading;
   private int shape;
   
+  private char[] letters = new char[] {'R', 'G', 'P', 'O', 'T', 'S', 'O', 'D', 'S'};
+  
   public Card(int cardQuantity, int cardColor, int cardShading, int cardShape)
   {
     quantity = (cardQuantity % 3 + 3) % 3;
@@ -47,17 +49,6 @@ public class Card {
   
   public String toString()
   {
-   String[] letters = new String[9];
-   letters[0] = "R";
-   letters[1] = "G";
-   letters[2] = "P";
-   letters[3] = "O";
-   letters[4] = "T";
-   letters[5] = "S";
-   letters[6] = "O";
-   letters[7] = "D";
-   letters[8] = "S";
-   
    return String.valueOf(quantity) + letters[color - 1] + letters[shading + 2] + letters[shape + 5];
   }
   
