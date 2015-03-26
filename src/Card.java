@@ -45,7 +45,29 @@ public class Card {
     return shape;
   }
   
+  public String toString()
+  {
+   String[] letters = new String[9];
+   letters[0] = "R";
+   letters[1] = "G";
+   letters[2] = "P";
+   letters[3] = "O";
+   letters[4] = "T";
+   letters[5] = "S";
+   letters[6] = "O";
+   letters[7] = "D";
+   letters[8] = "S";
+   
+   return String.valueOf(quantity) + letters[color - 1] + letters[shading + 2] + letters[shape + 5];
+  }
   
+  public boolean isSet(Card card2, Card card3)
+  {
+    return (quantity + card2.getQuantity() + card3.getQuantity()) % 3 == 0 &&
+      (color + card2.getColor() + card3.getColor()) % 3 == 0 &&
+      (shading + card2.getShading() + card3.getShading()) % 3 == 0 &&
+      (shape + card2.getShape() + card3.getShape()) % 3 == 0;
+  }
   
   public boolean equals(Object obj) 
   {

@@ -59,4 +59,35 @@ public class CardTest extends TestCase {
    
   }
   
+  public void testCardString()
+  {
+    Card card1 = new Card(1, 1, 1, 1);
+    Card card2 = new Card(3, 2, 3, 2);
+    Card card3 = new Card(4, 5, 6, 7);
+    Card card4 = new Card(0, -1, -2, -3);
+    
+    assertEquals("1ROO", card1.toString());
+    assertEquals("3GSD", card2.toString());
+    assertEquals("1GSO", card3.toString());
+    assertEquals("3GOS", card4.toString());
+  }
+  
+  public void testCardSet()
+  {
+   Card card1 = new Card(1, 1, 1, 1);
+   Card card2 = new Card(2, 1, 1, 1);
+   Card card3 = new Card(3, 1, 1, 1);
+   Card card4 = new Card(2, 2, 2, 2);
+   Card card5 = new Card(3, 3, 3, 3);
+   
+   assertEquals(true, card1.isSet(card2, card3));
+   assertEquals(true, card1.isSet(card4, card5));
+   assertEquals(false, card1.isSet(card2, card4));
+   assertEquals(true, card3.isSet(card2, card1));
+   assertEquals(true, card2.isSet(card1, card3));
+   assertEquals(false, card2.isSet(card1, card4));
+   assertEquals(false, card4.isSet(card1, card2));
+   assertEquals(false, card4.isSet(card3, card2));
+   
+  }  
 }
