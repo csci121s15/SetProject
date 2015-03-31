@@ -7,7 +7,7 @@ public class Deck {
   // Implement the rest of this class yourself
   
   public Deck(String filename) {
-    cards = new ArrayList<Card>(81);
+    ArrayList<Card> cards = new ArrayList<Card>(81);
     
     try {
       String line;
