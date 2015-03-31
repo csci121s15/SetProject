@@ -50,6 +50,8 @@ public class CardTest extends TestCase {
     Card c = new Card(1, 2, 3, 1);
     
     // Should be 1GSO
+    assertEquals("1GSO", c.toString());
+      
     System.out.println(c);
   }
   
