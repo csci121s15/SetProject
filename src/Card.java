@@ -114,25 +114,7 @@ public class Card {
       strShape += "S";
     }
     return strQuantity + strColor + strShad + strShape;
-    
-    
-    
-    
-    
-      
-    
-  
-  }
-  
-    
-    
-  
-  
-  
-  
-  
-  
-  
+ }
   
   public int getQuantity() {
     return quantity;
