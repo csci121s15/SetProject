@@ -5,12 +5,12 @@ public class Card {
   private int shading;
   private int shape; 
 
-  public Card(int cardQuantity, int cardColor, int cardShading, int cardShape){
+  public Card(int Quantity, int Color, int Shading, int Shape){
 
-    quantity = ((((cardQuantity % 3)+3)%3)+1);
-    color = ((((cardColor % 3)+3)%3)+1);
-    shading = ((((cardShading % 3)+3)%3)+1);
-    shape = ((((cardShape % 3)+3)%3)+1);
+    quantity = ((((Quantity % 3)+3)%3)+1);
+    color = ((((Color % 3)+3)%3)+1);
+    shading = ((((Shading % 3)+3)%3)+1);
+    shape = ((((Shape % 3)+3)%3)+1);
   }
 
   public int getQuantity() {
