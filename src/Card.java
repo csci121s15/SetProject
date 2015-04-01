@@ -5,10 +5,10 @@ public class Card {
   private int shape;
   
   Card(int quantity, int color, int shading, int shape) {
-    this.quantity = quantity;
-    this.color = color;
-    this.shading = shading;
-    this.shape = shape;
+    this.quantity = fixValue(quantity);
+    this.color = fixValue(color);
+    this.shading = fixValue(shading);
+    this.shape = fixValue(shape);
   }
   
   public int getQuantity() {
@@ -67,6 +67,13 @@ public class Card {
       s = "S";
     
     return string = quantity + c + t + s;
+  }
+  
+  private int fixValue(int valueToFix) {
+    if (valueToFix < 1 || valueToFix > 3)
+      return (((valueToFix % 3) + 3) % 3) + 1;
+    else
+      return valueToFix;
   }
   
   public boolean equals(Object obj) {
