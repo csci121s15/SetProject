@@ -114,12 +114,7 @@ public class DeckTest extends TestCase {
      Card card4 = new Card(1, 1, 2, 1);
      
      assertEquals(4, deck.size());
-     
      assertEquals(0, deck.getNextCardIndex());
-     assertEquals("1 1 1 1", deck.getCard(0));
-     assertEquals("1 1 1 2", deck.getCard(1));
-     assertEquals("1 1 1 3", deck.getCard(2));
-     assertEquals("1 1 2 1", deck.getCard(3));
      
      assertEquals(true, deck.hasNext());
      assertEquals(true, deck.getNext().equals(card1));

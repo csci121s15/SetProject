@@ -37,15 +37,6 @@ public class Deck {
   }
   
   //for testing purposes
-  public String getCard(int index)
-  {
-    return String.valueOf(cards.get(index).getQuantity()) + " " +
-      String.valueOf(cards.get(index).getColor()) + " " +
-      String.valueOf(cards.get(index).getShading()) + " " +
-      String.valueOf(cards.get(index).getShape());
-   }
-  
-  //for testing purposes
   public int size()
   {
    return cards.size();
