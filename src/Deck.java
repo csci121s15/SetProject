@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
-  public ArrayList<Card> cards;
-  public int nextCardIndex;
+  private ArrayList<Card> cards;
+  private int nextCardIndex;
   
   public Deck()
   {
