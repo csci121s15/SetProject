@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
-  private ArrayList<Card> cards;
-  private int nextCardIndex;
+  public ArrayList<Card> cards;
+  public int nextCardIndex;
   
   public Deck()
   {
@@ -30,23 +30,6 @@ public class Deck {
     Collections.shuffle(cards);
   }
   
-  //for testing purposes
-  public int getNextCardIndex()
-  {
-    return nextCardIndex;
-  }
-  
-  //for testing purposes
-  public int size()
-  {
-   return cards.size();
-  }
-  
-  //for testing purposes
-  public boolean contains(Card card)
-  {
-   return cards.contains(card); 
-  }
   
   public boolean hasNext()
   {
