@@ -26,7 +26,7 @@ public class Deck {
         }
       }
     }
-    
+ 
     Collections.shuffle(cards);
   }
   
@@ -41,11 +41,8 @@ public class Deck {
    if (hasNext() == false)
      return null;
    
-   else
-   {
-     nextCardIndex += 1;
-     return cards.get(nextCardIndex - 1);
-   }
+   nextCardIndex += 1;
+   return cards.get(nextCardIndex - 1);
   }
   
   public Deck(String filename)
