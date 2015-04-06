@@ -38,10 +38,11 @@ public class Card {
 
   
   public boolean isSet(Card card2, Card card3) {
-    return (quantity + card2.getQuantity() + card3.getQuantity()) % 3 == 0 || 
-      (color + card2.getColor() + card3.getColor()) % 3 == 0 || 
-      (shading + card2.getShading() + card3.getShading()) % 3 == 0 || 
+    return (quantity + card2.getQuantity() + card3.getQuantity()) % 3 == 0 && 
+      (color + card2.getColor() + card3.getColor()) % 3 == 0 && 
+      (shading + card2.getShading() + card3.getShading()) % 3 == 0 && 
       (shape + card2.getShape() + card3.getShape()) % 3 == 0;
+  
   }
   
   public String toString() {
