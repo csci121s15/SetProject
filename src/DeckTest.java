@@ -51,4 +51,25 @@ public class DeckTest extends TestCase {
      assertEquals(false, deck.hasNext());
      assertEquals(null, deck.getNext());
   }
+   
+   public void testEmptyDeck()
+   {
+    Deck deck = new Deck("emptydeck.txt");
+    
+    assertEquals(false, deck.hasNext());
+    assertEquals(null, deck.getNext());
+   }
+   
+   public void testOneDeck()
+   {
+    Deck deck = new Deck("onedeck.txt");
+    Card card = new Card(1, 1, 1, 1);
+    
+    assertEquals(true, deck.hasNext());
+    assertEquals(true, deck.getNext().equals(card));
+    
+    assertEquals(false, deck.hasNext());
+    assertEquals(null, deck.getNext());
+   }
 }
+
