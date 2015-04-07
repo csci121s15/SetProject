@@ -1,3 +1,4 @@
+import junit.framework.TestCase;
 public class Card {
   
   private int[] c = new int[4];
@@ -64,6 +65,9 @@ public class Card {
       return true;
     }
     else if ((quanSum % 3 != 0) && (colorSum % 3 != 0) && (shadingSum % 3 != 0) && (shapeSum % 3 == 0)) {
+      return true;
+    }
+    else if ((quanSum % 3 == 0) && (colorSum % 3 == 0) && (shadingSum % 3 == 0) && (shapeSum % 3 == 0)) {
       return true;
     }
     else {
