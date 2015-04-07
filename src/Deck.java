@@ -2,9 +2,44 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
   // Implement the rest of this class yourself
+  private ArrayList<Card> cards = new ArrayList<Card>(81);
+  private int nextCardIndex = 0;
+  
+  public Deck() {
+    for ( int i = 1; i <= 3; i++) {
+      for (int a = 1; a <= 3; a++) {
+        for (int b = 1; b <= 3; b++) {
+          for (int c = 1; c<=3; c++) {
+            Card card = new Card(i,a,b,c);
+          }
+        }
+      }
+    }
+    Collections.shuffle(cards);
+  }
+  
+  public boolean hasNext() {
+    if (nextCardIndex < cards.size()) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  
+  public Card getNext() {
+    if (hasNext() == false) {
+      return null;
+    }
+    else {
+      nextCardIndex += 1;
+      return cards.get(nextCardIndex - 1);
+    }
+  }
   
   public Deck(String filename) {
     cards = new ArrayList<Card>(81);
