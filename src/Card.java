@@ -5,18 +5,41 @@ public class Card {
   private int shape; 
   private int value;
   
+  private String quantString;
+  private String colorString;
+  private String shadingString;
+  private String shapeString;
+  
   public Card(int theQuantity, int theColor, int theShading, int theShape) {
-    quantity = theQuantity;
-    quantity = ((((theQuantity % 3) + 3) % 3));
+    if (theQuantity < 1 || theQuantity > 3) {
+      quantity = (((theQuantity % 3) + 3) % 3) + 1;
+    }
+    else {
+      quantity = theQuantity;
+    }
     
-    color = theColor;
-    color = ((((theColor % 3) + 3) % 3));
+    if (theColor < 1 || theColor > 3) {
+      color = (((theColor % 3) + 3) % 3) + 1; 
+    }
+    else {
+      color = theColor;
+    }
     
-    shading = theShading;
-    shading = ((((theShading % 3) + 3) % 3));
+    if (theShading < 1 || theShading > 3) {
+      shading = (((theShading % 3) + 3) % 3) + 1;
+    }
+    else {
+      shading = theShading;
+    }
     
-    shape = theShape;
-    shape = ((((theShape % 3) + 3) % 3));
+    if (theShape < 1 || theShape > 3) {
+      shape = (((theShape % 3) + 3) % 3) + 1;
+    }
+    else {
+      shape = theShape;
+    }
+      
+   
     
   }
   //Got the valueToFix from class//
@@ -61,10 +84,18 @@ public class Card {
   }
   
   public String toString() {
-    String string = "" + quantity;
+    String string = "";
+    String quantString = "";
     String colorString = "";
     String shadingString = "";
     String shapeString = "";
+    
+    if (quantity == 1)
+      quantString = "1";
+    if (quantity == 2)
+      quantString = "2";
+    if (quantity == 3)
+      quantString = "3";
     
     
     if (color == 1)
@@ -88,7 +119,7 @@ public class Card {
     if (shape == 3)
       shapeString = "S";
     
-    return string = quantity + colorString + shadingString + shapeString;
+    return string = quantString + colorString + shadingString + shapeString;
    
   }
 

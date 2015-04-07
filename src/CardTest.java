@@ -25,7 +25,7 @@ public class CardTest extends TestCase {
   
   public void testNegativeSetValues() {
     Card card1 = new Card(-4, -4, -4, -4);
-    assertEquals("2GTD", card1.toString());
+    assertEquals("3PSS", card1.toString());
   }
   
   public void testSetIsLegal() {
