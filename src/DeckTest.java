@@ -14,6 +14,9 @@ public class DeckTest extends TestCase {
    * one will be called when running JUnit over this class.)
    */
   public void testX() {
+    Deck d = new Deck("3cards.txt");
+    assertEquals(d.hasNext(), true);
+    assertEquals(d.getNext(), Card);
   }
   
 }
