@@ -60,6 +60,20 @@ public class Table
   
   public int numSets()
   {
-   return 0; 
+    int numSets = 0;
+    
+   for (int i = 0; i < numCards() - 2; i++)
+   {
+    for (int j = i + 1; j < numCards() - 1; j ++)
+    {
+      for (int k = j + 1; j < numCards(); k++)
+      {
+        if (getCard(i).isSet(getCard(j), getCard(k)) == true)
+          numSets += 1;
+      }
+    }
+   }
+   
+   return numSets;
   }
 }
