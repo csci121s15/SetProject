@@ -11,7 +11,7 @@ public class Deck {
   public Deck() {
     // Creates a deck with all standard 81 set cards, shuffled.
     cards = new ArrayList<Card>(81);
-    for(int i = 0; i < 81; i++) {
+    
       for (int quantity =1; quantity <= 3; quantity ++) {
         for (int color =1; color <= 3; color++) {
           for (int shading =1; shading <= 3; shading++) {
@@ -22,8 +22,7 @@ public class Deck {
           }
         }
       }
-    }
-    Collections.shuffle(cards);  
+    Collections.shuffle(cards);
   }
   
 //  public Deck(String filename) {
