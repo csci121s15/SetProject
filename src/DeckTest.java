@@ -13,7 +13,6 @@ public class DeckTest extends TestCase {
    * many "testSomething" methods in this class as you wish, and each
    * one will be called when running JUnit over this class.)
    */
-<<<<<<< HEAD
   public void testAllCards() {
     Deck d = new Deck("81cards.txt");
     for (int i=0; i<81; i++) {     
@@ -32,12 +31,6 @@ public class DeckTest extends TestCase {
     }
     d.getNext();
     assertEquals(d.hasNext(), false);
-=======
-  public void testX() {
-    Deck d = new Deck("3cards.txt");
-    assertEquals(d.hasNext(), true);
-    assertEquals(d.getNext(), Card);
->>>>>>> f42a0c418c0dc72f06e4a60567710ab824b03261
   }
   
 }
