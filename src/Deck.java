@@ -3,9 +3,25 @@ import java.io.FileReader;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
 
-public class Deck {
-  // Implement the rest of this class yourself
-  
+public class Deck{
+  private int nextCardIndex;
+  private ArrayList<Card>cards;
+
+public void Deck() {
+  cards = new ArrayList<Card>(81);
+  for (int quantity = 1; quantity <= 3; quantity++) {
+    for(int color = 1; color <= 3; color++) {
+      for(int shading = 1; shading <= 3; shading++) {
+        for(int shape = 1; shape <= 3; shape++) {
+          Card r = new Card(quantity, color, shading, shape);
+          cards.add(r);
+        }
+      }
+    }
+  }
+  nextCardIndex = 0;
+}
+
   public Deck(String filename) {
     cards = new ArrayList<Card>(81);
     
@@ -42,4 +58,23 @@ public class Deck {
       throw new RuntimeException("Error while reading file: " + e.toString());
     }
   }
+  
+public Card getNext() {
+  if(hasNext() == false) {
+    return null;
+  }
+  else { 
+    nextCardIndex ++;
+    return cards.get(nextCardIndex -1);
+  }
+}
+
+public boolean hasNext() {
+  if( cards.size() < nextCardIndex -1) {
+    return false; 
+  }
+  else {
+    return true;
+  }
+}
 }
