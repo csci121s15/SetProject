@@ -44,13 +44,36 @@ public class Card {
   }
  
   public String toString() {
-    String [] Colour = {"R","G","P"};
-    String [] Filling = {"O","T","S"};
-    String [] Form = {"O","D","S"};
-    
-    // Figured out a way to do it with Arrays!
-    // I still want to meet on Thursday though!
-    return quantity + Colour[color-1] + Filling[shading-1] + Form[shape-1];
+    String str = "";
+    str += quantity;
+    if(color == 1) {
+      str += "R";
+    }
+    if(color == 2) {
+      str += "G";
+    }
+    if(color == 3) {
+      str += "P";
+    }
+    if(shading == 1) {
+      str += "O";
+    }
+    if(shading == 2) {
+      str += "T";
+    }
+    if(shading == 3) {
+      str += "S";
+    }
+    if(shape == 1) {
+      str += "O";
+    }
+    if(shape == 2) {
+      str += "D";
+    }
+    if(shape == 3) {
+      str += "S";
+    }
+    return str;
   }
 
   public boolean equals(Object obj){
