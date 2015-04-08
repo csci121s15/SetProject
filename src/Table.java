@@ -10,8 +10,9 @@ public class Table
   public void add(Card card)
   {
     TableNode newNode = new TableNode(card);
-    newNode.setNext(head);
-    head = newNode;
+
+      newNode.setNext(head);
+      head = newNode;
   }
   
   public void removeSet(Card card1, Card card2, Card card3)
@@ -36,10 +37,14 @@ public class Table
   public int numCards()
   {
     TableNode ref = head;
-    int numCards = 0;
+    int numCards = 1;
+    
+    if (ref == null)
+      return 0;
     
     while (ref.getNext() != null)
     {
+     ref.getNext();
      numCards += 1;
     }
     
@@ -49,10 +54,15 @@ public class Table
   public Card getCard(int cardIndex)
   {
     TableNode ref = head;
+    if (ref == null)
+      return null;
     
     for (int n = 0; n < cardIndex; n++)
     {
       ref = ref.getNext();
+      
+      if (ref == null)
+        return null;
     }
     
     return ref.getCard();
