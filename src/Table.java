@@ -20,18 +20,16 @@ public class Table
     if (card1.isSet(card2, card3) == false)
       return;
     
-    if (card1.isSet(card2, card3) == true)
-    {
-     TableNode ref = head;
+    TableNode ref = head;
      
-     Card removedCard1;
-     Card removedCard2;
-     Card removedCard3;
+    Card removedCard1;
+    Card removedCard2;
+    Card removedCard3;
      
 
       
       
-     }
+     
   }
   
   public int numCards()
@@ -44,7 +42,7 @@ public class Table
     
     while (ref.getNext() != null)
     {
-     ref.getNext();
+     ref = ref.getNext();
      numCards += 1;
     }
     
@@ -76,7 +74,7 @@ public class Table
    {
     for (int j = i + 1; j < numCards() - 1; j ++)
     {
-      for (int k = j + 1; j < numCards(); k++)
+      for (int k = j + 1; k < numCards(); k++)
       {
         if (getCard(i).isSet(getCard(j), getCard(k)) == true)
           numSets += 1;
