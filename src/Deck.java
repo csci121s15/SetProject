@@ -81,12 +81,12 @@ public class Deck {
     //Returns the next card in the deck if there is one, null otherwise
     //You can call hasNext within this method to see if you should return
     //a card or return null
-    int cardIndex = nextCardIndex;
-    nextCardIndex += 1;
     if (hasNext() == false) { 
       return null;
     }
     else {
+      int cardIndex = nextCardIndex;
+      nextCardIndex += 1;
       return cards.get(cardIndex);
     }
   }
