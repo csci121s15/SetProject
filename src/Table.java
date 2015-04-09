@@ -1,4 +1,4 @@
-public class Table{
+public class Table {
   private TableNode head;
   
   public Table() {
@@ -6,7 +6,9 @@ public class Table{
   }
   
   public void add(Card c) {
-    
+    TableNode n = new TableNode(c);
+    n.setNext(head);
+    head = n;
   }
   
   public void removeSet(Card c1, Card c2, Card c3) {
@@ -14,7 +16,13 @@ public class Table{
   }
   
   public int numCards() {
-    return 0;
+    TableNode temp = head;
+    int num = 0;
+      while (temp != null) {
+        num += 1;
+        temp = temp.getNext();
+      }
+    return num;
   }
   
   public Card getCard(int index) {
