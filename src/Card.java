@@ -6,10 +6,18 @@ public class Card {
   // Create the rest of this class yourself
   
   public Card (int isQuant, int isCol, int isShad, int isShap) {
-    quantity = ((((isQuant % 3) + 3) % 3));
-    color = ((((isCol % 3) + 3) % 3));
-    shading = ((((isShad % 3) + 3) % 3));
-    shape = ((((isShap % 3) + 3) % 3));
+    quantity = fixValue(isQuant);
+    color = fixValue(isCol);
+    shading = fixValue(isShad);
+    shape = fixValue(isShap);
+    
+  }
+  
+  private int fixValue(int valueToFix) {
+    if (valueToFix < 1 || valueToFix > 3) 
+      return (((valueToFix % 3) + 3) % 3) + 1;
+    else
+      return valueToFix;
   }
     
   
@@ -50,39 +58,39 @@ public class Card {
   public String toString() {
     String str = "";
     str += quantity;
-    if (color == 0) {
+    if (color == 1) {
       str += "R";
     }
     
-    if (color == 1) {
+    if (color == 2) {
       str += "G";
     }
     
-    if (color == 2) {
+    if (color == 3) {
       str += "P";
     }
     
-    if (shading == 0) {
-      str += "O";
-    }
-    
     if (shading == 1) {
-      str += "T";
+      str += "O";
     }
     
     if (shading == 2) {
+      str += "T";
+    }
+    
+    if (shading == 3) {
       str += "S";
     }
     
-    if (shape == 0) {
+    if (shape == 1) {
       str += "O";
     }
     
-    if (shape == 1) {
+    if (shape == 2) {
       str += "D";
     }
     
-    if (shape == 2) {
+    if (shape == 3) {
       str += "S";
     }
     return str;

@@ -15,17 +15,17 @@ public class DeckTest extends TestCase {
    */
   public void testDeckCard() {
     Deck d = new Deck("threeCards.dat");
-    Card c1 = new Card(0,1,2,1);
+    Card c1 = new Card(1,2,3,2);
     
     assertEquals(true, d.getNext().equals(c1));
     assertEquals(true, d.hasNext());
     
-    Card c2 = new Card(1,2,0,2);
+    Card c2 = new Card(2,3,1,3);
     
     assertEquals(true, d.getNext().equals(c2));
     assertEquals(true, d.hasNext());
     
-    Card c3 = new Card(2,0,1,0);
+    Card c3 = new Card(3,1,2,1);
     
     assertEquals(true, d.getNext().equals(c3));
     assertEquals(false, d.hasNext());

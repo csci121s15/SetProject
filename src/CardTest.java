@@ -14,14 +14,14 @@ public class CardTest extends TestCase {
    * one will be called when running JUnit over this class.)
    */
   public void testCardWorks() {
-    Card c1 = new Card(0,1,2,1);
-    assertEquals("0GSD",c1.toString());
+    Card c1 = new Card(1,2,3,2);
+    assertEquals("1GSD",c1.toString());
     
-    Card c2 = new Card(1,2,0,2);
-    assertEquals("1POS",c2.toString());
+    Card c2 = new Card(2,3,1,3);
+    assertEquals("2POS",c2.toString());
     
-    Card c3 = new Card(2,0,1,0);
-    assertEquals("2RTO",c3.toString());
+    Card c3 = new Card(3,1,2,1);
+    assertEquals("3RTO",c3.toString());
     
  
     
