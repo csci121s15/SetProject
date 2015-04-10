@@ -69,19 +69,30 @@ public class Table
   public int numSets()
   {
     int numSets = 0;
+    TableNode n1 = head;
     
-   for (int i = 0; i < numCards() - 2; i++)
-   {
-    for (int j = i + 1; j < numCards() - 1; j ++)
-    {
-      for (int k = j + 1; k < numCards(); k++)
+    while (n1 != null && n1.getNext() != null && n1.getNext().getNext() != null)
+    { 
+      TableNode n2 = n1.getNext();
+      
+      while (n2 != null && n2.getNext() != null)
       {
-        if (getCard(i).isSet(getCard(j), getCard(k)) == true)
-          numSets += 1;
+        TableNode n3 = n2.getNext();
+        
+        while (n3 != null)
+        {
+          if (n1.getCard().isSet(n2.getCard(), n3.getCard()) == true)
+            numSets += 1;
+          
+          n3 =n3.getNext();
+        }
+        
+        n2 = n2.getNext();
       }
+      
+      n1 = n1.getNext();
     }
-   }
    
-   return numSets;
+    return numSets;
   }
 }
