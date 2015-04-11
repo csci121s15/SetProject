@@ -122,4 +122,43 @@ public class TableTest extends TestCase {
    table.add(new Card(1, 1, 3, 3));
    assertEquals(3, table.numSets());
   }
+  
+  public void testRemoveSetNotSet()
+  {
+   Table table = new Table();
+   Card card1 = new Card(1, 1, 1, 1);
+   Card card2 = new Card(1, 1, 1, 2);
+   Card card3 = new Card(2, 1, 1, 1);
+   
+   table.add(card1);
+   table.add(card2);
+   table.add(card3);
+   
+   assertEquals(3, table.numCards());
+   
+   table.removeSet(card1, card2, card3);
+   
+   assertEquals(3, table.numCards());
+  }
+  
+  public void testRemoveSetNoneAreHead()
+  {
+    Table table = new Table();
+    
+    Card card1 = new Card(1, 1, 1, 1);
+    Card card2 = new Card(1, 1, 1, 2);
+    Card card3 = new Card(1, 1, 1, 3);
+    Card card4 = new Card(2, 2, 2, 2);
+    
+    table.add(card1);
+    table.add(card2);
+    table.add(card3);
+    table.add(card4);
+    
+    assertEquals(4, table.numCards());
+    
+    table.removeSet(card1, card2, card3);
+    
+    assertEquals(1, table.numCards());
+  }
 }

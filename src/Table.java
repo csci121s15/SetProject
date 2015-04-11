@@ -22,14 +22,49 @@ public class Table
     
     TableNode ref = head;
      
-    Card removedCard1;
-    Card removedCard2;
-    Card removedCard3;
+    Card removedCard1 = null;
+    Card removedCard2 = null;
+    Card removedCard3 = null;
      
-
-      
-      
+    while (ref.getNext() != null)
+    {
+     if (ref.getCard() == card1)
+       removedCard1 = card1;
+     if (ref.getCard() == card2)
+       removedCard2 = card2;
+     if (ref.getCard() == card3)
+       removedCard3 = card3;
      
+     ref = ref.getNext();
+    }
+    
+    if (removedCard1 == card1 && removedCard2 == card2 && removedCard3 == card3)
+    {
+      TableNode curr = head;
+      TableNode prev = null;
+      
+      while (curr.getNext() != null)
+      {
+       if (curr.getCard() == card1 || curr.getCard() == card2 || curr.getCard() == card3)
+       {
+         if (curr == head)
+         {
+           head = head.getNext();
+         }
+         
+         else
+         {
+           prev.setNext(curr.getNext());
+           curr.setNext(null);
+         }
+       }
+       
+       prev = curr;
+       curr = curr.getNext();
+      }
+    }
+    
+    return;
   }
   
   public int numCards()

@@ -6,8 +6,6 @@ public class Card {
   private int shading;
   private int shape;
   
-  private char[] letters = new char[] {'R', 'G', 'P', 'O', 'T', 'S', 'O', 'D', 'S'};
-  
   public Card(int cardQuantity, int cardColor, int cardShading, int cardShape)
   {
     quantity = (cardQuantity % 3 + 3) % 3;
@@ -49,7 +47,8 @@ public class Card {
   
   public String toString()
   {
-   return String.valueOf(quantity) + letters[color - 1] + letters[shading + 2] + letters[shape + 5];
+    char[] letters = new char[] {'R', 'G', 'P', 'O', 'T', 'S', 'O', 'D', 'S'};
+    return String.valueOf(quantity) + letters[color - 1] + letters[shading + 2] + letters[shape + 5];
   }
   
   public boolean isSet(Card card2, Card card3)
