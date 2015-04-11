@@ -26,7 +26,7 @@ public class Table
     Card removedCard2 = null;
     Card removedCard3 = null;
      
-    while (ref.getNext() != null)
+    while (ref != null)
     {
      if (ref.getCard() == card1)
        removedCard1 = card1;
@@ -35,21 +35,26 @@ public class Table
      if (ref.getCard() == card3)
        removedCard3 = card3;
      
-     ref = ref.getNext();
+       ref = ref.getNext();
     }
     
     if (removedCard1 == card1 && removedCard2 == card2 && removedCard3 == card3)
     {
       TableNode curr = head;
       TableNode prev = null;
+      int prevNumCards = numCards();
       
-      while (curr.getNext() != null)
+      while (curr != null)
       {
        if (curr.getCard() == card1 || curr.getCard() == card2 || curr.getCard() == card3)
        {
          if (curr == head)
          {
+           prev = head;
            head = head.getNext();
+           prev.setNext(null);
+           curr = head;
+           prev = null;
          }
          
          else
@@ -59,8 +64,20 @@ public class Table
          }
        }
        
-       prev = curr;
-       curr = curr.getNext();
+       if (numCards() == 0)
+         return;
+       
+       if (curr.getNext() == null && prev != null)
+         curr = prev.getNext();
+         
+       
+       if (prevNumCards == numCards())
+       {
+         prev = curr;
+         curr = curr.getNext();
+       }
+       
+       prevNumCards = numCards();
       }
     }
     
