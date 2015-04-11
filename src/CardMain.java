@@ -1,19 +1,35 @@
+import java.util.ArrayList;
+
 public class CardMain{
   public static void main(String[] args){
-   System.out.println("Hello");
-   Card c = new Card(20,7,0,8);
-   Card d = new Card(20,7,0,8);
-   Card e = new Card(20,7,0,8);
-     
-   System.out.println(c.getQuantity());
-   System.out.println(c.getColor());
-   System.out.println(c.getShading());
-   System.out.println(c.getShape());
-   System.out.println(c.toString());
-   String a = "heyy";
-   System.out.println(a + c);
-   System.out.println(c.isSet(d, e));
-   System.out.println("yeah!");
+    Deck d = new Deck("81cards.txt");
+//    for (int i=0; i<81; i++) {  
+//      System.out.print(i + " ");
+    System.out.print(d.getSize() + " ");
+      System.out.print(d.hasNext() + " ");
+      System.out.println(d.getNext());
+//    }
+
+
+
+
+
+
+
+//   System.out.println("Hello");
+//   Card c = new Card(20,7,0,8);
+//   Card d = new Card(20,7,0,8);
+//   Card e = new Card(20,7,0,8);
+//     
+//   System.out.println(c.getQuantity());
+//   System.out.println(c.getColor());
+//   System.out.println(c.getShading());
+//   System.out.println(c.getShape());
+//   System.out.println(c.toString());
+//   String a = "heyy";
+//   System.out.println(a + c);
+//   System.out.println(c.isSet(d, e));
+//   System.out.println("yeah!");
 
 //   for (int i = -1; i<=2147483647; i++) {
 //     int j = i;

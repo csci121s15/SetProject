@@ -16,12 +16,17 @@ public class Deck {
         for (int k=1; k<=3; k++) {
           for (int m=1; m<=3; m++) {
             Card card = new Card(i, j, k, m);
+            cards.add(card);
           }
         }
       }
     }
     
     Collections.shuffle(cards);  
+  }
+  
+  public int getSize(){
+    return cards.size();
   }
   
   public boolean hasNext() {
@@ -48,7 +53,7 @@ public class Deck {
   
   public Deck(String filename) {
     //file is named 3cards.txt
-    //ArrayList cards = new ArrayList<Card>(81);
+    //cards = new ArrayList<Card>(81);
     
     try {
       String line;
@@ -76,7 +81,7 @@ public class Deck {
         int shape = Integer.parseInt(tokenizer.nextToken());
         
         cards.add(new Card(quantity, color, shading, shape));
-        int nextCardIndex = 0;
+        nextCardIndex = 0;
       }
     }
     catch(Exception e) {
