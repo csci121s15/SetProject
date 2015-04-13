@@ -3,6 +3,8 @@ public class TableNode{
   private TableNode next;
   
   public TableNode(Card){
+    //should set card to given parameter and next field to null
+    next = null;
   }
   
   public void setNext(Node newNext){
@@ -18,4 +20,3 @@ public class TableNode{
   }
   
 }
-
