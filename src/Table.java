@@ -15,7 +15,10 @@ public class Table{
   
   public void removeSet(Card c1, Card c2, Card c3){
     TableNode curr = head;
-    if (c1.isSet(c2, c3)){
+    if (c1.isSet(c2, c3) == false){
+      return;
+    }
+    else if (c1.isSet(c2, c3)){
      
      c1 = null;
      c2 = null;
@@ -64,11 +67,10 @@ public class Table{
     TableNode curr2 = curr.getNext();
     TableNode curr3 = curr2.getNext();
     int setCount = 0;
-    
-    if (curr.getCard().isSet(curr2.getCard(), curr3.getCard())){
-      setCount += 1;
-    }
-    while (curr.getNext()
-    return setCount;  
-  }
+    if (curr.getCard().isSet(curr2.getCard(), curr3.getCard()) == true){     
+      setCount +=1;
+     }
+    return setCount;
  }
+}
+ 
