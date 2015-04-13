@@ -1,7 +1,6 @@
 public class Table{
     private TableNode head;
     private int theLength;
-    //  Card newCard = new Card();
     
     public Table(){
         head = null;
@@ -27,6 +26,38 @@ public class Table{
     
     public void removeSet(Card card1, Card card2, Card card3){
         //removes set from table
+      
+    TableNode temp = head;
+    TableNode prev = head;
+    TableNode newNext = head;
+
+    /// for an empty list
+    if (head == null) {
+      break;
+    }
+
+    else {
+      
+      ///if you're removing the head
+      if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
+        head = temp.getNext();
+      }
+      
+      ///otherwise
+      else{
+        temp = temp.getNext();
+        
+        if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
+          newNext = temp.getNext();
+          prev.setNext(newNext);
+        }
+        
+        //if the head is the only item
+        if (temp == null){
+          prev.setNext(newNode);
+        }
+    }
+    }
     }
     
     public int numCards(){
@@ -70,11 +101,8 @@ public class Table{
     
     public int numSets(){
         //returns the number of Sets on the table
-      
-      
       int sets = 0;
 
-      
         for (int i=0; i==numCards()-2; i++) {
             for (int j=1; j==numCards()-1; j++){
                 for (int k=2; k==numCards(); k++){

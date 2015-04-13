@@ -10,7 +10,9 @@ public class CardMain{
 //      System.out.println(d.getNext());
 //    }
     
-    Card c = new Card(1,1,1,1);
+    Table t = new Table();
+    
+    System.out.print(t.numSets());
 
 
 
