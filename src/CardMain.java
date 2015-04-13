@@ -2,13 +2,15 @@ import java.util.ArrayList;
 
 public class CardMain{
   public static void main(String[] args){
-    Deck d = new Deck("81cards.txt");
+//    Deck d = new Deck("81cards.txt");
 //    for (int i=0; i<81; i++) {  
 //      System.out.print(i + " ");
-    System.out.print(d.getSize() + " ");
-      System.out.print(d.hasNext() + " ");
-      System.out.println(d.getNext());
+//    System.out.print(d.getSize() + " ");
+//      System.out.print(d.hasNext() + " ");
+//      System.out.println(d.getNext());
 //    }
+    
+    Card c = new Card(1,1,1,1);
 
 
 
