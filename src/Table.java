@@ -46,21 +46,24 @@ public class Table{
           while (temp.getNext != null) {  
             if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
               head = temp.getNext();
+              prev = head;
               temp = head;
               if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
                 head = temp.getNext();
+                prev = temp;
                 temp = head;
               }
             }
             else {
+              prev = temp;
               temp = temp.getNext();
+              
             }
           }
           ///FROM SORTED LINKED LIST NEEDS TO BE CHANGED
           if (temp.getNext() == null){
             if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
-              newNode.setNext(temp);
-              prev.setNext(newNode);
+              prev.setNext(null);
             }
             //adds to the end
             else {
@@ -87,6 +90,7 @@ public class Table{
             prev.setNext(newNode);
           }
         }
+        //
       }
     }
     
