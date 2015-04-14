@@ -66,21 +66,21 @@ public class Game
              if (t.getCard(j).isSet(t.getCard(k), t.getCard(l)) == true && startCards == t.numCards())
              {
                t.removeSet(t.getCard(j), t.getCard(k), t.getCard(l));
+               
+               for (int i = 0; i < 3; i++)
+               {
+                 if (d.hasNext() == false)
+                   return;
+       
+                 t.add(d.getNext());
+               }
+     
+               return;
              }
            }
          }
        }
      }
-     
-     for (int i = 0; i < 3; i++)
-     {
-       if (d.hasNext() == false)
-         return;
-       
-       t.add(d.getNext());
-     }
-     
-     return;
    }
    
    else if (t.numSets() != 0 && t.numCards() > 12)
@@ -95,12 +95,15 @@ public class Game
          {
            for (int l = k + 1; l < t.numCards(); l++)
            {
-             t.removeSet(t.getCard(j), t.getCard(k), t.getCard(l));
+             if (t.getCard(j).isSet(t.getCard(k), t.getCard(l)) == true && startCards == t.numCards())
+             {
+               t.removeSet(t.getCard(j), t.getCard(k), t.getCard(l));
+               return;
+             }
            }
          }
        }
      }
-     return;
    }
    
    else if (t.numSets() != 0 && d.hasNext() == false)
