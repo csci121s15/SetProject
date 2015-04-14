@@ -11,9 +11,13 @@ public class CardMain{
 //    }
     
     Table t = new Table();
-    
-    System.out.print(t.numSets());
-
+    Card c = new Card(1,1,1,1);
+    Card c2 = new Card(2,2,2,2);
+    Card c3 = new Card(3,3,3,3);
+    t.add(c);
+    t.add(c2);
+    t.add(c3);
+    System.out.println(t.getCard(0));
 
 
 

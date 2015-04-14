@@ -1,10 +1,8 @@
 public class Table{
     private TableNode head;
-    private int theLength;
     
     public Table(){
         head = null;
-        theLength = 0;
     }
     
     public void add(Card newCard){
@@ -20,86 +18,114 @@ public class Table{
         else {
             newTableNode.setNext(head);
             head = newTableNode;
-        }
-        
+        }  
     }
+    
     
     public void removeSet(Card card1, Card card2, Card card3){
         //removes set from table
       
+      //makes sure they're a set
+      if (card1.isSet(card2,card3) != true) {
+        return;
+      }
+      //check if they're on the table
+      
       TableNode temp = head;
       TableNode prev = head;
-      TableNode newNext = head;
+      int i = 0;
       
-      /// for an empty list
-      if (head == null) {
-        break;
-      }
-      
-      else {
+      while (temp != null) {
         
-        ///if you're removing the head first GET RID OF THIS MAYBE
-        if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
-          head = temp.getNext();
+        //check for first card
+        if (temp.getCard() == card1) {
+          i+=1;
           temp = head;
           prev = head;
-          newNext = head;
-          //loop until end.
-          while (temp.getNext != null) { 
-            //for removing head first
-            if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
-              head = temp.getNext();
-              prev = head;
+          while (temp != null) {
+            //only checks for second card if first is there
+            if (temp.getCard() == card2) {
+              i+=1;
               temp = head;
-              newNext = head;
-              
-              // this can probably go too
-              if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
-                head = temp.getNext();
-                prev = temp;
-                temp = head;
+              prev = head;
+              while (temp != null) {
+                //only checks for third card if 1&2 are there
+                if (temp.getCard() == card3) {
+                  i+=1;
+                  temp = head;
+                  prev = head;
+                }
+                //3rd card check
+                else {
+                  temp = temp.getNext();
+                }
               }
             }
+            //2nd card check 
             else {
-              prev = temp;
               temp = temp.getNext();
-              newNext = head;
-              
             }
           }
-          ///FROM SORTED LINKED LIST NEEDS TO BE CHANGED
-          if (temp.getNext() == null){
-            if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
-              prev.setNext(null);
-            }
-            //adds to the end
-            else {
-              temp.setNext(newNode);
-            }
-          }
-          ///FROM SORTED LINKED LIST NEEDS TO BE CHANGED
         }
-              
-         
-        }
-        
-        ///otherwise
-        else{
+        //moves through list for first card
+        else {
           temp = temp.getNext();
+        }
+      }
+      
+      //if all cards are on the table i will equal 3
+      if (i == 3) {
+
+        //If they are on table.
+          temp = head;
+          prev = head;
           
-          if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
-            newNext = temp.getNext();
-            prev.setNext(newNext);
+          /// for an empty list
+          if (head == null) {
+            return;
           }
           
-          //if the head is the only item
-          if (temp == null){
-            prev.setNext(newNode);
+          else {
+            //loop until end.
+            while (temp.getNext() != null) { 
+              //for removing head first
+              if (temp.getCard() == card1 || temp.getCard() == card2 || temp.getCard() == card3){
+                if (temp == head){
+                  head = temp.getNext();
+                  prev = head;
+                  temp = head;
+                }
+                else {
+                  temp = temp.getNext();
+                  prev.setNext(temp);
+                }
+              }
+              else {
+                temp = temp.getNext();
+                if (prev != head){
+                  prev=prev.getNext();
+                }
+              }
+            }
+            
+            //for last card
+            if (temp.getNext()==null) {
+              if (temp.getCard() == card1 || temp.getCard() == card2 || temp.getCard() == card3){
+                prev.setNext(null);
+              }
+              //might not need to be here
+              else {
+                return;
+              }
+            }
           }
         }
-        //
+      else {
+        return;
       }
     }
+    
+    
     
     public int numCards(){
         //returns number of cards on table
@@ -118,7 +144,7 @@ public class Table{
     }
     
     public Card getCard(int index){
-      // find out if its asking for the index or for the nth card on the table
+      // parameter is the index although it will remove the (n-1)th card on the table
         //returns card at given int
  
         TableNode temp = head;
@@ -129,7 +155,7 @@ public class Table{
             return temp.getCard();
         }
         else {  // this may cause errors maybe change to j < index
-          for (int j = 0; j==index; j++){
+          for (int j = 0; j<index; j++){
             temp = temp.getNext();
             }
           if (temp == null) {
@@ -161,4 +187,6 @@ public class Table{
         }
         return sets;
     }
+    
+    //end
 }
