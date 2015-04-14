@@ -170,10 +170,11 @@ public class Table{
     public int numSets(){
         //returns the number of Sets on the table
       int sets = 0;
+      int numCards = numCards();
 
-        for (int i=0; i==numCards()-2; i++) {
-            for (int j=1; j==numCards()-1; j++){
-                for (int k=2; k==numCards(); k++){
+        for (int i=0; i<numCards-2; i++) {
+            for (int j=1; j<numCards-1; j++){
+                for (int k=2; k<numCards; k++){
                   
                         Card card1 = getCard(i);
                         Card card2 = getCard(j);
