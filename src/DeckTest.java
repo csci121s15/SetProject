@@ -30,7 +30,7 @@ public class DeckTest extends TestCase {
   
    public void testCostumDeckCreation()
   {
-     Deck deck = new Deck("DeckTester.dat");
+     Deck deck = new Deck("DeckTester.txt");
      Card card1 = new Card(1, 1, 1, 1);
      Card card2 = new Card(1, 1, 1, 2);
      Card card3 = new Card(1, 1, 1, 3);
