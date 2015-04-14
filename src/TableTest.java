@@ -40,7 +40,11 @@ public class TableTest extends TestCase {
     
     assertEquals(c4.isSet(c5,c6), true);
     assertEquals(t.numCards(), 6);
-    assertEquals(t.numSets(), 2);
+    assertEquals(t.numSets(), 8);
+    
+    t.removeSet(c1,c2,c3);
+    
+    assertEquals(t.numCards(), 3);
     
   }
   

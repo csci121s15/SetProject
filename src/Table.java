@@ -35,20 +35,20 @@ public class Table{
       TableNode prev = head;
       int i = 0;
       
-      while (temp != null) {
+      while (temp.getNext() != null) {
         
         //check for first card
         if (temp.getCard() == card1) {
           i+=1;
           temp = head;
           prev = head;
-          while (temp != null) {
+          while (temp.getNext() != null) {
             //only checks for second card if first is there
             if (temp.getCard() == card2) {
               i+=1;
               temp = head;
               prev = head;
-              while (temp != null) {
+              while (temp.getNext() != null) {
                 //only checks for third card if 1&2 are there
                 if (temp.getCard() == card3) {
                   i+=1;
@@ -88,8 +88,8 @@ public class Table{
           else {
             //loop until end.
             while (temp.getNext() != null) { 
-              //for removing head first
-              if (temp.getCard() == card1 || temp.getCard() == card2 || temp.getCard() == card3){
+              //1st card: for removing head or middle
+              if (temp.getCard() == card1){
                 if (temp == head){
                   head = temp.getNext();
                   prev = head;
@@ -110,14 +110,78 @@ public class Table{
             
             //for last card
             if (temp.getNext()==null) {
-              if (temp.getCard() == card1 || temp.getCard() == card2 || temp.getCard() == card3){
+              if (temp.getCard() == card1){
                 prev.setNext(null);
               }
               //might not need to be here
               else {
-                return;
+                while (temp.getNext() != null) { 
+                  //2nd card: for removing head or middle
+                  if (temp.getCard() == card2){
+                    if (temp == head){
+                      head = temp.getNext();
+                      prev = head;
+                      temp = head;
+                    }
+                    else {
+                      temp = temp.getNext();
+                      prev.setNext(temp);
+                    }
+                  }
+                  else {
+                    temp = temp.getNext();
+                    if (prev != head){
+                      prev=prev.getNext();
+                    }
+                  }
+                }
+                
+                //for last card
+                if (temp.getNext()==null) {
+                  if (temp.getCard() == card2){
+                    prev.setNext(null);
+                  }
+                  //might not need to be here
+                  else {
+                    while (temp.getNext() != null) { 
+                      //2nd card: for removing head or middle
+                      if (temp.getCard() == card2){
+                        if (temp == head){
+                          head = temp.getNext();
+                          prev = head;
+                          temp = head;
+                        }
+                        else {
+                          temp = temp.getNext();
+                          prev.setNext(temp);
+                        }
+                      }
+                      else {
+                        temp = temp.getNext();
+                        if (prev != head){
+                          prev=prev.getNext();
+                        }
+                      }
+                    }
+                    
+                    //for last card
+                    if (temp.getNext()==null) {
+                      if (temp.getCard() == card2){
+                        prev.setNext(null);
+                      }
+                      //might not need to be here
+                      else {
+                        return;
+                      }
+                    }
+                  }
+                }
+                  }
+                }
               }
             }
+            
+           //end 
           }
         }
       else {
@@ -173,8 +237,8 @@ public class Table{
       int numCards = numCards();
 
         for (int i=0; i<numCards-2; i++) {
-            for (int j=1; j<numCards-1; j++){
-                for (int k=2; k<numCards; k++){
+            for (int j=i+1; j<numCards-1; j++){
+                for (int k=j+1; k<numCards; k++){
                   
                         Card card1 = getCard(i);
                         Card card2 = getCard(j);
