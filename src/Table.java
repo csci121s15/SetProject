@@ -38,16 +38,22 @@ public class Table{
       
       else {
         
-        ///if you're removing the head first
+        ///if you're removing the head first GET RID OF THIS MAYBE
         if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
           head = temp.getNext();
           temp = head;
+          prev = head;
+          newNext = head;
           //loop until end.
-          while (temp.getNext != null) {  
+          while (temp.getNext != null) { 
+            //for removing head first
             if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
               head = temp.getNext();
               prev = head;
               temp = head;
+              newNext = head;
+              
+              // this can probably go too
               if (temp.getCard == card1 || temp.getCard == card2 || temp.getCard == card3){
                 head = temp.getNext();
                 prev = temp;
@@ -57,6 +63,7 @@ public class Table{
             else {
               prev = temp;
               temp = temp.getNext();
+              newNext = head;
               
             }
           }
