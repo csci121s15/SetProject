@@ -23,70 +23,80 @@ public class Table{
     
     
     public void removeSet(Card card1, Card card2, Card card3){
-        //removes set from table
+      //removes set from table
       
       //makes sure they're a set
       if (card1.isSet(card2,card3) != true) {
         return;
       }
-      //check if they're on the table
       
+      //make sure the table isn't empty
+      if (head == null) {
+        return;
+      }
+      
+      //check if they're on the table and if they are assign them to variables
+      Card firstCard = null; 
+      Card secondCard = null;
+      Card thirdCard = null;
+      
+      //temp traverses through the list
       TableNode temp = head;
       TableNode prev = head;
       int i = 0;
-      
-      while (temp.getNext() != null) {
+      //goes through list
+      while (temp != null) {
+        //check for first card 
         
-        //check for first card
-        if (temp.getCard() == card1) {
-          i+=1;
-          temp = head;
-          prev = head;
-          while (temp.getNext() != null) {
-            //only checks for second card if first is there
-            if (temp.getCard() == card2) {
-              i+=1;
-              temp = head;
-              prev = head;
-              while (temp.getNext() != null) {
-                //only checks for third card if 1&2 are there
-                if (temp.getCard() == card3) {
-                  i+=1;
-                  temp = head;
-                  prev = head;
-                }
-                //3rd card check
-                else {
-                  temp = temp.getNext();
-                }
-              }
-            }
-            //2nd card check 
-            else {
-              temp = temp.getNext();
-            }
-          }
+        //make instance of card class
+        //Card c = new Card
+        
+        //THIS IS WHERE THE PROBLEM OCCURS 
+        //temp.getCard() is equal to 1ROO, as is card1
+        // when I run it through the debugger it confirms this, 
+        // however the if statement seems to ignore this
+        // and procedes to move to the else statement, 
+        // but for some reason it will recognize the
+        // second card that is also equal to 1ROO when temp is 
+        // equal to its Node to it in the linked list.
+        if (card1.equals(temp.getCard())) {
+          firstCard = card1;
+          //temp = head;
+          //check for second
+          //while (temp != null) {
         }
-        //moves through list for first card
+        else if (card2.equals(temp.getCard())) {
+          secondCard = card2;
+              //temp = head;
+              //check for third
+              //while (temp != null) {
+        }
+        else if (card3.equals(temp.getCard())) {
+          thirdCard = card3;
+        }
+                //else {
+                 // temp = temp.getNext();
+             //   }
+           //   }
+           // }
+            //else {
+             // temp = temp.getNext();
+       //     }
+       //   }
+      //  }
         else {
           temp = temp.getNext();
         }
       }
       
-      //if all cards are on the table i will equal 3
-      if (i == 3) {
+      //if all cards are on table variables will equal cards given in parameter
+      if (firstCard == card1 && secondCard == card2 && thirdCard == card3) {
 
-        //If they are on table.
+        //sets the temp back to the head
           temp = head;
           prev = head;
           
-          /// for an empty list
-          if (head == null) {
-            return;
-          }
-          
-          else {
-            //loop until end.
+            //loop until end to remove cards
             while (temp.getNext() != null) { 
               //1st card: for removing head or middle
               if (temp.getCard() == card1){
@@ -179,11 +189,7 @@ public class Table{
                   }
                 }
               }
-            }
-            
-           //end 
-          }
-        }
+      //if cards are not on table the method ends
       else {
         return;
       }

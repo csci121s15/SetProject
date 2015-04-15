@@ -42,6 +42,9 @@ public class TableTest extends TestCase {
     assertEquals(t.numCards(), 6);
     assertEquals(t.numSets(), 8);
     
+    assertEquals(t.getCard(0), c1);
+    
+    
     t.removeSet(c1,c2,c3);
     
     assertEquals(t.numCards(), 3);
