@@ -43,47 +43,23 @@ public class Table{
       //temp traverses through the list
       TableNode temp = head;
       TableNode prev = head;
-      int i = 0;
+
       //goes through list
       while (temp != null) {
         //check for first card 
         
         //make instance of card class
-        //Card c = new Card
         
-        //THIS IS WHERE THE PROBLEM OCCURS 
-        //temp.getCard() is equal to 1ROO, as is card1
-        // when I run it through the debugger it confirms this, 
-        // however the if statement seems to ignore this
-        // and procedes to move to the else statement, 
-        // but for some reason it will recognize the
-        // second card that is also equal to 1ROO when temp is 
-        // equal to its Node to it in the linked list.
+        //This if statement is where the infinite loop occurs
         if (card1.equals(temp.getCard())) {
           firstCard = card1;
-          //temp = head;
-          //check for second
-          //while (temp != null) {
         }
         else if (card2.equals(temp.getCard())) {
           secondCard = card2;
-              //temp = head;
-              //check for third
-              //while (temp != null) {
         }
         else if (card3.equals(temp.getCard())) {
           thirdCard = card3;
         }
-                //else {
-                 // temp = temp.getNext();
-             //   }
-           //   }
-           // }
-            //else {
-             // temp = temp.getNext();
-       //     }
-       //   }
-      //  }
         else {
           temp = temp.getNext();
         }
@@ -97,9 +73,9 @@ public class Table{
           prev = head;
           
             //loop until end to remove cards
-            while (temp.getNext() != null) { 
-              //1st card: for removing head or middle
-              if (temp.getCard() == card1){
+            while (temp.getNext() != null) {
+              //for removing card at head or in middle
+              if (temp.getCard() == card1 || temp.getCard() == card2 || temp.getCard() == card3){
                 if (temp == head){
                   head = temp.getNext();
                   prev = head;
@@ -125,70 +101,10 @@ public class Table{
               }
               //might not need to be here
               else {
-                while (temp.getNext() != null) { 
-                  //2nd card: for removing head or middle
-                  if (temp.getCard() == card2){
-                    if (temp == head){
-                      head = temp.getNext();
-                      prev = head;
-                      temp = head;
-                    }
-                    else {
-                      temp = temp.getNext();
-                      prev.setNext(temp);
-                    }
-                  }
-                  else {
-                    temp = temp.getNext();
-                    if (prev != head){
-                      prev=prev.getNext();
-                    }
-                  }
-                }
-                
-                //for last card
-                if (temp.getNext()==null) {
-                  if (temp.getCard() == card2){
-                    prev.setNext(null);
-                  }
-                  //might not need to be here
-                  else {
-                    while (temp.getNext() != null) { 
-                      //2nd card: for removing head or middle
-                      if (temp.getCard() == card2){
-                        if (temp == head){
-                          head = temp.getNext();
-                          prev = head;
-                          temp = head;
-                        }
-                        else {
-                          temp = temp.getNext();
-                          prev.setNext(temp);
-                        }
-                      }
-                      else {
-                        temp = temp.getNext();
-                        if (prev != head){
-                          prev=prev.getNext();
-                        }
-                      }
-                    }
-                    
-                    //for last card
-                    if (temp.getNext()==null) {
-                      if (temp.getCard() == card2){
-                        prev.setNext(null);
-                      }
-                      //might not need to be here
-                      else {
-                        return;
-                      }
-                    }
-                  }
-                }
-                  }
-                }
+                return;
               }
+            }
+      }
       //if cards are not on table the method ends
       else {
         return;

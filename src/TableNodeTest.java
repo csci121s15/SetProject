@@ -14,8 +14,17 @@ public class TableNodeTest extends TestCase {
    * one will be called when running JUnit over this class.)
    */
   public void testTableNode() {
- //   TableNode t = new TableNode();
- //   assertEquals();
+    Card c = new Card(1,1,1,1);
+    Card c2 = new Card(2,2,2,2);
+    TableNode t = new TableNode(c);
+    TableNode t2 = new TableNode(c2);
+    Table table = new Table();
+    
+    
+    assertEquals(t.getNext(), null);
+    t.setNext(t2);
+    assertEquals(t.getNext(), t2);
+    assertEquals(t.getCard(), c);
   }
   
 }
