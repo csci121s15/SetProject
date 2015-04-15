@@ -53,57 +53,66 @@ public class Table{
         //This if statement is where the infinite loop occurs
         if (card1.equals(temp.getCard())) {
           firstCard = card1;
+          temp = temp.getNext();
         }
         else if (card2.equals(temp.getCard())) {
           secondCard = card2;
+          temp = temp.getNext();
         }
         else if (card3.equals(temp.getCard())) {
           thirdCard = card3;
+          temp = temp.getNext();
         }
-        else {
+        else{
           temp = temp.getNext();
         }
       }
       
       //if all cards are on table variables will equal cards given in parameter
-      if (firstCard == card1 && secondCard == card2 && thirdCard == card3) {
+      if (card1.equals(firstCard) && card2.equals(secondCard) && card3.equals(thirdCard)) {
+        int i = 0;
+        while(i < 3) {
 
-        //sets the temp back to the head
+          //sets the temp back to the head
           temp = head;
           prev = head;
           
-            //loop until end to remove cards
-            while (temp.getNext() != null) {
-              //for removing card at head or in middle
-              if (temp.getCard() == card1 || temp.getCard() == card2 || temp.getCard() == card3){
-                if (temp == head){
-                  head = temp.getNext();
-                  prev = head;
-                  temp = head;
-                }
-                else {
-                  temp = temp.getNext();
-                  prev.setNext(temp);
-                }
+          //loop until end to remove cards
+          while (temp.getNext() != null && i < 3) {
+            //for removing card at head or in middle
+            if (card1.equals(temp.getCard()) || card2.equals(temp.getCard()) || card3.equals(temp.getCard())){
+              if (temp == head){
+                head = temp.getNext();
+                prev = head;
+                temp = head;
+                i+=1;
               }
               else {
                 temp = temp.getNext();
-                if (prev != head){
-                  prev=prev.getNext();
-                }
+                prev.setNext(temp);
+                i+=1;
               }
             }
-            
-            //for last card
-            if (temp.getNext()==null) {
-              if (temp.getCard() == card1){
-                prev.setNext(null);
-              }
-              //might not need to be here
-              else {
-                return;
+            else {
+              temp = temp.getNext();
+              if (prev != head){
+                prev=prev.getNext();
               }
             }
+          }
+          
+          //for last card
+          if (temp.getNext()==null) {
+            if (card1.equals(temp.getCard()) || card2.equals(temp.getCard()) || card3.equals(temp.getCard())){
+              prev.setNext(null);
+              i+=1;
+            }
+            //might not need to be here
+            else {
+              return;
+            }
+          }
+        }
       }
       //if cards are not on table the method ends
       else {
