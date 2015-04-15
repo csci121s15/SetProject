@@ -80,7 +80,7 @@ public class TestTable extends TestCase {
     Card c2 = new Card(2, 1, 1, 1);
     Card c3 = new Card(3, 3, 1, 3);
     Card c4 = new Card(3, 2, 1, 1);
-    Card c5 = new Card(2, 2, 2, 2);
+    Card c5 = new Card(2, 2, 3, 2);
     
     t.add(c1);
     t.add(c2);
@@ -94,7 +94,66 @@ public class TestTable extends TestCase {
     assertEquals(c3, t.getCard(2));
     assertEquals(c4, t.getCard(1));
     assertEquals(c5, t.getCard(0));
+    assertEquals(null, t.getCard(5));
     assertEquals(1, t.numSets());
     
+  }
+  
+  public void testNoSetRemove() {
+    Table t = new Table();
+    Card c1 = new Card(1, 1, 1, 1);
+    Card c2 = new Card(2, 1, 1, 1);
+    Card c3 = new Card(3, 1, 1, 1);
+    Card c4 = new Card(3, 2, 1, 1);
+    Card c5 = new Card(2, 2, 3, 2);
+    
+    t.add(c1);
+    t.add(c2);
+    t.add(c3);
+    t.add(c4);
+    t.add(c5);
+    
+    assertEquals(5, t.numCards());
+    assertEquals(c1, t.getCard(4));
+    assertEquals(c2, t.getCard(3));
+    assertEquals(c3, t.getCard(2));
+    assertEquals(c4, t.getCard(1));
+    assertEquals(c5, t.getCard(0));
+    assertEquals(null, t.getCard(5));
+    assertEquals(1, t.numSets());
+    
+    t.removeSet(c1, c2, c4);
+    
+    assertEquals(5, t.numCards());
+    assertEquals(1, t.numSets());
+  }
+  
+  public void testOneSetRemove() {
+    Table t = new Table();
+    Card c1 = new Card(1, 1, 1, 1);
+    Card c2 = new Card(2, 1, 1, 1);
+    Card c3 = new Card(3, 1, 1, 1);
+    Card c4 = new Card(3, 2, 1, 1);
+    Card c5 = new Card(2, 2, 3, 2);
+    
+    t.add(c1);
+    t.add(c2);
+    t.add(c3);
+    t.add(c4);
+    t.add(c5);
+    
+    assertEquals(5, t.numCards());
+    assertEquals(c1, t.getCard(4));
+    assertEquals(c2, t.getCard(3));
+    assertEquals(c3, t.getCard(2));
+    assertEquals(c4, t.getCard(1));
+    assertEquals(c5, t.getCard(0));
+    assertEquals(null, t.getCard(5));
+    assertEquals(1, t.numSets());
+    
+    t.removeSet(c1, c2, c3);
+    
+    assertEquals(2, t.numCards());
+    assertEquals(0, t.numSets());
   }
 }

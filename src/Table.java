@@ -12,43 +12,87 @@ public class Table {
   }
   
   public void removeSet(Card c1, Card c2, Card c3) {
-    //if the 3 cards don't form a set or if any of the cards are not on the table, return
-    //otherwise, remove c1, c2, c3, preserving relative order of the rest of the cards
-    /*if (c1.isSet(c2, c3)) {
+    int n = 0;
+    if (c1.isSet(c2, c3) == false) {
+      return;
+    }
+    
+    else {
       Card remove1 = null;
       Card remove2 = null;
       Card remove3 = null;
       
       TableNode temp = head;
-      TableNode  prev = head;
+      
       while (temp != null) {
-        if (temp.getCard() == c1) {
-          temp = temp.getNext();
+        if (c1 == temp.getCard()) {
+          remove1 = c1;
           c1 = null;
+          temp = temp.getNext();
         }
-      }   
+        if (c2 == temp.getCard()) {
+          remove2 = c2;
+          c2 = null;
+          temp = temp.getNext();
+        }
+        if (c3 == temp.getCard()) {
+          remove3 = c3;
+          c3 = null;
+          temp = temp.getNext();
+        }
+        return;
+      }
+      
+      if (c1 == remove1 && c2 == remove2 && c3 == remove3) {
+        temp = head;
+        TableNode prev = null;
+        
+        while (temp != null && n < 3) {
+          if (c1 == temp.getCard() || c2 == temp.getCard() || c3 == temp.getCard()) {
+            if (temp == head) {
+              prev = temp;
+              temp = temp.getNext();
+              prev.setNext(null);
+              temp = null;
+              n += 1;
+            }
+            else {
+              prev.setNext(temp.getNext());
+              temp.setNext(null);
+              n += 1;
+            }
+          }
+          return;
+        }
+        
+        if (temp.getNext() == null && prev != null) {
+          temp = prev.getNext();
+        }
+      }
     }
-    else {
-      return;
-    }*/  
+    return;
   }
   
   public int numCards() {
     TableNode temp = head;
     int num = 0;
-      while (temp != null) {
-        num += 1;
-        temp = temp.getNext();
-      }
+    while (temp != null) {
+      num += 1;
+      temp = temp.getNext();
+    }
     return num;
   }
   
   public Card getCard(int index) {
-    //if index is out of bounds, return null
+    if (index > numCards() - 1) {
+      return null;
+    }
+    
     TableNode temp = head;
     if (temp == null) {
       return null;
     }
+    
     else {
       for (int i = 0; i < index; i++) {
         temp = temp.getNext();

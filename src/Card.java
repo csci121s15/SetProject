@@ -50,10 +50,11 @@ public class Card {
   }
   
   public boolean isSet(Card c1, Card c2) {
-    int sum = quantity + color + shading + shape;
-    int card1 = c1.getQuantity() + c1.getColor() + c1.getShading() + c1.getShape();
-    int card2 = c2.getQuantity() + c2.getColor() + c2.getShading() + c2.getShape();
-    if ((card1 + card2 + sum) % 3 == 0) {
+    int quantityset = quantity + c1.getQuantity() + c2.getQuantity();
+    int colorset = color + c1.getColor() + c2.getColor();
+    int shadeset = shading + c1.getShading() + c2.getShading();
+    int shapeset = shape + c1.getShape() + c2.getShape();
+    if (quantityset % 3 == 0 && colorset % 3 == 0 && shadeset % 3 == 0 && shapeset % 3 == 0) {
       return true;
     }
     else {
