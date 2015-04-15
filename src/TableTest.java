@@ -51,4 +51,43 @@ public class TableTest extends TestCase {
     
   }
   
+  public void fullTable() {
+    Table t = new Table();
+    Card c1 = new Card(2,1,1,1);
+    Card c2 = new Card(2,2,1,2);
+    Card c3 = new Card(3,1,3,3);
+    Card c11 = new Card(1,1,1,1);
+    Card c22 = new Card(2,3,3,1);
+    Card c33 = new Card(3,3,3,3);
+    Card c111 = new Card(2,1,2,1);
+    Card c222 = new Card(2,2,2,2);
+    Card c333 = new Card(3,3,2,1);
+    Card c1111 = new Card(1,3,1,2);
+    Card c2222 = new Card(3,3,2,2);
+    Card c3333 = new Card(3,3,3,3);
+    Card c4 = new Card(1,1,1,1);
+    Card c5 = new Card(2,2,2,2);
+    Card c6 = new Card(3,3,3,3);
+    
+    t.add(c1);
+    t.add(c2);
+    t.add(c3);
+    t.add(c11);
+    t.add(c22);
+    t.add(c33);
+    t.add(c111);
+    t.add(c222);
+    t.add(c333);
+    t.add(c1111);
+    t.add(c2222);
+    t.add(c3333);
+    t.add(c4);
+    t.add(c5);
+    t.add(c6);
+    
+    t.removeSet(c1,c2,c3);
+    
+    assertEquals(t.numCards(), 9);
+  }
+
 }
