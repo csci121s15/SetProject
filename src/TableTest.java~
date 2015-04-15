@@ -1,0 +1,31 @@
+import junit.framework.TestCase;
+public class TableTest extends TestCase {
+  public void testNumCards() {
+    Card c1 = new Card(1, 1, 1, 1);
+    Card c2 = new Card(1, 1, 2, 2);
+    Card c3 = new Card(1, 2, 3, 1);
+    
+    Table t = new Table();
+    
+    t.add(c1);
+    t.add(c2);
+    t.add(c3);
+    
+    assertEquals(3, t.numCards());
+    
+    
+  }
+public void testgetCard() {
+    Card c1 = new Card(1, 1, 1, 1);
+    Card c2 = new Card(1, 1, 2, 2);
+    Card c3 = new Card(1, 2, 3, 1);
+    
+    Table t = new Table();
+    
+    t.add(c1);
+    t.add(c2);
+    t.add(c3);
+    
+    assertEquals("1ROO", t.getCard(2).toString());
+    }
+}

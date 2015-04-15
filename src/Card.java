@@ -1,4 +1,5 @@
 import junit.framework.TestCase;
+
 public class Card {
   
   private int[] c = new int[4];

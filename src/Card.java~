@@ -67,6 +67,9 @@ public class Card {
     else if ((quanSum % 3 != 0) && (colorSum % 3 != 0) && (shadingSum % 3 != 0) && (shapeSum % 3 == 0)) {
       return true;
     }
+    else if ((quanSum % 3 == 0) && (colorSum % 3 == 0) && (shadingSum % 3 == 0) && (shapeSum % 3 == 0)) {
+      return true;
+    }
     else {
       return false;
     }
