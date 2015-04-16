@@ -12,65 +12,52 @@ public class Table {
   }
   
   public void removeSet(Card c1, Card c2, Card c3) {
-    int n = 0;
     if (c1.isSet(c2, c3) == false) {
       return;
     }
     
     else {
-      Card remove1 = null;
-      Card remove2 = null;
-      Card remove3 = null;
+      boolean isRemove1 = false;
+      boolean isRemove2 = false;
+      boolean isRemove3 = false;
       
       TableNode temp = head;
       
       while (temp != null) {
         if (c1 == temp.getCard()) {
-          remove1 = c1;
-          c1 = null;
-          temp = temp.getNext();
+          isRemove1 = true;
         }
         if (c2 == temp.getCard()) {
-          remove2 = c2;
-          c2 = null;
-          temp = temp.getNext();
+          isRemove2 = true;
         }
         if (c3 == temp.getCard()) {
-          remove3 = c3;
-          c3 = null;
-          temp = temp.getNext();
+          isRemove3 = true;
         }
-        return;
+        temp = temp.getNext();
       }
       
-      if (c1 == remove1 && c2 == remove2 && c3 == remove3) {
+      if (isRemove1 && isRemove2 && isRemove3) {
         temp = head;
         TableNode prev = null;
         
-        while (temp != null && n < 3) {
+        while (temp != null) {
           if (c1 == temp.getCard() || c2 == temp.getCard() || c3 == temp.getCard()) {
             if (temp == head) {
-              prev = temp;
               temp = temp.getNext();
-              prev.setNext(null);
-              temp = null;
-              n += 1;
+              head = head.getNext();
             }
             else {
               prev.setNext(temp.getNext());
-              temp.setNext(null);
-              n += 1;
+              temp = temp.getNext();
             }
           }
-          return;
-        }
-        
-        if (temp.getNext() == null && prev != null) {
-          temp = prev.getNext();
+          else {
+            prev = temp;
+            temp = temp.getNext();
+          }
         }
       }
     }
-    return;
   }
   
   public int numCards() {

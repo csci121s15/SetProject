@@ -156,4 +156,56 @@ public class TestTable extends TestCase {
     assertEquals(2, t.numCards());
     assertEquals(0, t.numSets());
   }
+  
+  public void testAddOneAtATime() {
+    Table t = new Table();
+    Card c1 = new Card(1, 1, 1, 1);
+    Card c2 = new Card(2, 1, 1, 1);
+    Card c3 = new Card(3, 1, 1, 1);
+    Card c4 = new Card(3, 2, 1, 1);
+    Card c5 = new Card(2, 2, 3, 2);
+    
+    t.add(c1);
+    assertEquals(1, t.numCards());
+    assertEquals(c1, t.getCard(0));
+    assertEquals(0, t.numSets());
+    
+    t.add(c2);
+    assertEquals(2, t.numCards());
+    assertEquals(c2, t.getCard(0));
+    assertEquals(c1, t.getCard(1));
+    assertEquals(0, t.numSets());
+    
+    t.add(c3);
+    assertEquals(3, t.numCards());
+    assertEquals(c1, t.getCard(2));
+    assertEquals(c2, t.getCard(1));
+    assertEquals(c3, t.getCard(0));
+    assertEquals(1, t.numSets());
+    
+    t.add(c4);
+    assertEquals(4, t.numCards());
+    assertEquals(c1, t.getCard(3));
+    assertEquals(c2, t.getCard(2));
+    assertEquals(c3, t.getCard(1));
+    assertEquals(c4, t.getCard(0));
+    assertEquals(1, t.numSets());
+    
+    t.add(c5);
+    assertEquals(5, t.numCards());
+    assertEquals(c1, t.getCard(4));
+    assertEquals(c2, t.getCard(3));
+    assertEquals(c3, t.getCard(2));
+    assertEquals(c4, t.getCard(1));
+    assertEquals(c5, t.getCard(0));
+    assertEquals(1, t.numSets());
+    
+    t.removeSet(c1, c3, c4);
+    assertEquals(5, t.numCards());
+    assertEquals(1, t.numSets());
+    
+    t.removeSet(c1, c2, c3);
+    assertEquals(2, t.numCards());
+    assertEquals(0, t.numSets());
+  }
 }
