@@ -18,62 +18,62 @@ public class Table {
     }
   }
   
-  public void removeSet(Card card1, Card card2, Card card3) {
-    if (card1.isSet(card2, card3) == false) {
-      return;
-    }
-    TableNode temp = head;
-    Card cardnum1 = null;
-    Card cardnum2 = null;
-    Card cardnum3 = null;
-    
-    while(temp !=null) {
-      if(temp.getCard() == card1) {
-        temp = temp.getNext();
-        card1 = null;
+  public boolean onTable(Card card){
+    TableNode node = head;
+    while (node != null) {
+      if (node.getCard().equals(card)) {
+        return true;
       }
+      node = node.getNext();
+    }
+    return false;
+  }
+ 
+ 
+  public void removeCard(Card card){
+    TableNode newnode = null;
+    TableNode node = head;
+    while (node != null) {
+      if (node.getCard().equals(card)) {
+        if (newnode == null) {
+          head = node.getNext();
+        }
+        else {
+          newnode.setNext(node.getNext());
+        }
+        return;
+      }
+      newnode = node;
+      node = node.getNext();
     }
   }
+  
+  public void removeSet(Card card1, Card card2, Card card3) {
+    TableNode node = head;
+    TableNode curr = null;
     
-    //while (curr != null) {
-      //if (curr.getCard() == card1) {
-        //cardnum1 = card1;
-     // }
-      //if (curr.getCard() == card2) {
-        //cardnum2 = card2;
-      //}
-      //if (curr.getCard() == card3) {
-        //cardnum3 = card3;
-      //}
-      //curr = curr.getNext();
-    //}
-    
-   // while (curr == null) {
-      //if (curr.getCard() != card1) {
-        //cardnum1 = card1;
-      //}
-      //if (curr.getCard() != card2) {
-        //cardnum2 = card2;
-      //}
-      //if (curr.getCard() != card3) {
-        //cardnum3 = card3;
-      //}
-    //}
-  //}
+    if(!card1.isSet(card2, card3)){
+      return;
+    }
+    if(!onTable(card1) || !onTable(card2) || !onTable(card3)){
+      return;
+    }
+    removeCard(card1);
+    removeCard(card2);
+    removeCard(card3);
+  }
   
   public int numCards() {
     TableNode temp = head;
-    int card = 0;
+    int numcount = 0;
     if (temp == null) {
       return 0;
     }
-    else {
-      while (temp != null) {
-        card += 1;
-        temp = temp.getNext();
-      }
-      return card;
+    while (temp != null) {
+      numcount += 1;
+      temp = temp.getNext();
     }
+      return numcount;
   }
   
   public Card getCard(int index){
@@ -90,24 +90,22 @@ public class Table {
     return temp.getCard();
   }
   
-  public int numSets() {
-   TableNode card1 = head;
-   TableNode card2 = head;
-   TableNode card3 = head;
-   int setnum = 0;
-   for (int a = 0; a < length - 2; a++) {
-     for (int b = 1; b < length - 1; b++) {
-       for (int c = 2; c < length; c++){
-         
-         Card carda = getCard(a);
-         Card cardb = getCard(b);
-         Card cardc = getCard(c);
-         if(carda.isSet(cardb, cardc)) {
-           setnum += 1;
-         }
-       }
-     }
-   }
-   return setnum;
+  
+  public int numSets(){
+    int length = numCards();
+    int count = 0;
+    for(int i= 0; i < length; i++){
+      Card icard = getCard(i);
+      for(int j = i + 1; j < length; j++){
+        Card jcard = getCard(j);
+        for(int k = j + 1; k < length; k++){
+          Card kcard = getCard(k);
+          if(icard.isSet(jcard, kcard)){
+            count++;
+          }
+        }
+      }
+    }
+    return count; 
   }
 }

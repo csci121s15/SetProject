@@ -2,9 +2,16 @@ import junit.framework.TestCase;
 
 public class TableTest extends TestCase{
   
-  public void testTable() {
+  public void testEmpty() {
     Table tt = new Table();
-    Card card1 = new Card(1, 2, 3, 2);
+    assertEquals(0, tt.numCards());
+    assertEquals(null, tt.getCard(0));
+    assertEquals(0, tt.numSets());
+  }
+  
+  public void testCards() {
+    Table tt = new Table();
+    Card card1 = new Card(2, 1, 3, 2);
     tt.add(card1);
     
     Card card2 = new Card(3, 2, 3, 1);
@@ -16,6 +23,6 @@ public class TableTest extends TestCase{
     assertEquals(3, tt.numCards());
     assertTrue(tt.getCard(0).equals(card3));
     assertTrue(tt.getCard(1).equals(card2));
-    assertTrue(tt.getCard(2).equals(card1));
+    assertTrue(tt.getCard(2).equals(card1)); 
   }
 }
