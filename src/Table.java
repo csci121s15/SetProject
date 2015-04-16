@@ -159,7 +159,7 @@ public class Table {
   // Check if card is in table
   public boolean findMatch(Card card) {
     for(int i = 0; i < numCards(); i++) {
-      if(getCard(i) == card) {
+      if(getCard(i).equals(card)) {
         System.out.println("Match found");
         return true;
       }
