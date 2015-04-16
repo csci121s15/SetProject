@@ -24,13 +24,13 @@ public class Table {
       TableNode temp = head;
       
       while (temp != null) {
-        if (c1 == temp.getCard()) {
+        if (c1.equals(temp.getCard())) {
           isRemove1 = true;
         }
-        if (c2 == temp.getCard()) {
+        if (c2.equals(temp.getCard())) {
           isRemove2 = true;
         }
-        if (c3 == temp.getCard()) {
+        if (c3.equals(temp.getCard())) {
           isRemove3 = true;
         }
         temp = temp.getNext();
@@ -41,7 +41,7 @@ public class Table {
         TableNode prev = null;
         
         while (temp != null) {
-          if (c1 == temp.getCard() || c2 == temp.getCard() || c3 == temp.getCard()) {
+          if (c1.equals(temp.getCard()) || c2.equals(temp.getCard()) || c3.equals(temp.getCard())) {
             if (temp == head) {
               temp = temp.getNext();
               head = head.getNext();
