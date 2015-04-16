@@ -54,6 +54,7 @@ public class TableTest extends TestCase {
     assertEquals(1, tipTop.numCards());
   }
   
+  
 
   
   

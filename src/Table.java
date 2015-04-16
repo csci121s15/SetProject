@@ -13,6 +13,7 @@ public class Table {
   public void add(Card theCard) {
     //head insert card//
     TableNode theNode = new TableNode(theCard);
+    theLength += 1;
     if (head == null) {
       head = theNode;
     }
@@ -23,58 +24,88 @@ public class Table {
 
   }
   
+  private boolean onTable(Card theCard) {
+    //Got a pointer from a friend in class//
+    TableNode nerf = head;
+    while (nerf != null) {
+      if (nerf.getCard().equals(theCard)) {
+        return true;
+      }
+      nerf = nerf.getNext();
+    }
+    return false;
+  }
+  
+  private void removeCard(Card theCard) {
+    //removeCard helps to set up for removeSet//
+    TableNode nerf= findNerf(theCard);
+    theLength -= 1;
+    if (nerf == null) {
+      head = head.getNext();
+    }
+    else {
+      TableNode buff = nerf.getNext();
+      nerf.setNext(buff.getNext());
+    }
+  }
+  
+  private TableNode findNerf(Card theCard){
+    //in order for removeCard to work had to make a method of findNerf, which I used in removeCard//
+    TableNode nerf = null;
+    TableNode buff = head;
+    
+    while (buff != null) {
+      Card buffCard = buff.getCard();
+      if (buffCard.equals(theCard)) {
+        return nerf;
+      }
+      nerf = buff;
+      buff = buff.getNext();
+    }
+    return null;
+  }
+     
+       
+  
   public void removeSet(Card card1, Card card2, Card card3) {
     //If 3 cards don't form a set or if any of the cards are not on the table, return//
     //Otherwise: remove card1, card2, card3 preserving the relative order of the rest of the cards//
-    TableNode burr = head;
-    
-    Card theCard1;
-    Card theCard2;
-    Card theCard3;
-    
-    if (card3.isSet(card1, card2) != true) {
-      return; 
-    }
-    else if (card3.isSet(card1, card2) == true) {
-      theCard1 = null;
-      theCard2 = null;
-      theCard3 = null;
-    }
-   //Had a lot of trouble with removeSet//
-    while (burr != null) {
-      if (burr.getCard() == card1)
-        theCard1 = card1;
-      if (burr.getCard() == card2)
-        theCard2 = card2;
-      if (burr.getCard() == card3)
-        theCard3 = card3;
-      
-      burr = burr.getNext();
-    }
-    while (burr == null) {
-      if (burr.getCard() != card1)
-        theCard1 = card1;
-      if (burr.getCard() != card2)
-        theCard2 = card2;
-      if (burr.getCard() != card3)
-        theCard3 = card3;
-    }
-    
-  
-    
+    //since I made a removeCard method, I was able to use it in the removeSet method to help remove the cards from the set//
+   TableNode nerf = head;
+   TableNode buff = null;
+   
+   if (!card1.isSet(card2, card3)) {
+     return;
+   }
+   
+   if (!onTable(card1)) {
+     return;
+   }
+   
+   if (!onTable(card2)) {
+     return;
+   }
+   
+   if (!onTable(card3)) {
+     return;
+   }
+   
+   removeCard(card1);
+   removeCard(card2);
+   removeCard(card3); 
         
   }
   
   public int numCards() {
     //If we haven't stored the length of the list, we have to iterate through the list and count the cards (while loop)//
-    TableNode ref = head; 
+    TableNode nerf = head; 
     int theCards = 0;
-    if (ref == null) {
+    if (nerf == null) {
       return 0;
     }
-    while (ref != null) {
+    while (nerf != null) {
       theCards += 1; 
-      ref = ref.getNext();
+      nerf = nerf.getNext();
     }
     return theCards;
   }
@@ -83,22 +114,20 @@ public class Table {
   public Card getCard(int index) {
     //Iterate through the list index number of times, return the node there//
     //If index is out of bounds, return null//
-    TableNode app = head;
-    if (app == null) {
+    TableNode buff = head;
+    if (index >= theLength || buff == null) {
       return null;
     }
   
     if (index == 0) {
-      return app.getCard();
+      return buff.getCard();
     }
-    else if (index != 0) {
-      return null;
-    }
+   
     else {
       for (int i = 0; i < index; i++) {
-        app = app.getNext();
+        buff = buff.getNext();
       }
-     return app.getCard();
+     return buff.getCard();
     }
      
   }
@@ -106,13 +135,12 @@ public class Table {
   
   public int numSets() {
     //Get all triples of cards on the table and check isSet on each one (3 deep nested loop)//
-    TableNode card1 = head;
-    TableNode card2 = head;
-    TableNode card3 = head;
+    
     int theSetIs = 0;
+    
     for (int m = 0; m < theLength - 2; m++) {
-      for (int n = 1; n < theLength - 1; n++) {
-        for (int p = 2; p < theLength; p++) {
+      for (int n = m + 1; n < theLength - 1; n++) {
+        for (int p = n + 1; p < theLength; p++) {
          
           Card cardA = getCard(m);
           Card cardB = getCard(n);
