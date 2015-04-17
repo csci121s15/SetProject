@@ -1,6 +1,7 @@
 public class Table
 {
   private TableNode head;
+  private int length;
   
   public Table()
   {
@@ -15,6 +16,7 @@ public class Table
     else
     {
       TableNode n = new TableNode(card);
+      length++;
       n.setNext(head);
       head = n;
     }
@@ -25,10 +27,11 @@ public class Table
     TableNode curr = head;
     while(curr!= null)
     {
-      if(curr.getCard().toString().equals(p))
+      if(curr.getCard().equals(p))
       {
         return true;
       }
+      curr= curr.getNext();
     }
     
     return false;
@@ -36,7 +39,8 @@ public class Table
   
   private void removeCard(Card y)
   {
-    TableNode prev = head;
+    TableNode prev = findPrev(y);
+    length-=1;
     if(prev == null)
     {
       head = head.getNext();
@@ -46,6 +50,24 @@ public class Table
       TableNode curr = prev.getNext();
       prev.setNext(curr.getNext());
     }
+  }
+  
+  private TableNode findPrev(Card c)
+  {
+    TableNode prev = null;
+    TableNode curr = head;
+    
+    while(curr!= null)
+    {
+      Card n = curr.getCard();
+      if(n.equals(c))
+      {
+        return prev;
+      }
+      prev = curr;
+      curr = curr.getNext();
+    }
+    return null;
   }
   
   public void removeSet(Card c1, Card c2, Card c3)
@@ -79,6 +101,10 @@ public class Table
   {
     int count = 0;
     TableNode curr = head;
+    if(curr == null)
+    {
+      return 0;
+    }
     while(curr!= null)
     {
       count++;
@@ -96,8 +122,10 @@ public class Table
     //otherwise:
     // iterate through the list index number of times,
     // return the node there
-    if(head == null)
+    if(index >= length || p == null)
       return null;
+    if(index == 0)
+      return p.getCard();
     for(int j = 0; j < index; j++)
     {
       p = p.getNext();
@@ -110,13 +138,12 @@ public class Table
     //get all triples of cards on the table, and check isSet(). Create a counter and
     //everytime isSet() == true, update the counter by 1.
     int counter = 0;
-    int n = numCards();
     
-    for(int j = 0; j< n-2; j++)
+    for(int j = 0; j< length-2; j++)
     {
-      for(int k = 0; k< n-1; k++)
+      for(int k =  j + 1; k< length-1; k++)
       {
-        for(int z = 0; z< n; z++)
+        for(int z = k + 1; z< length; z++)
         {
           Card i = getCard(j);
           Card e = getCard(k);
