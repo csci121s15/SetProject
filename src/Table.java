@@ -19,14 +19,12 @@ public class Table {
     TableNode curr = head;
     
     while(curr != null) {
-      if(equals(z)) {
+      if(curr.getCard().toString().equals(z)) {
         return true;
-    }
-      else{
-        curr.getNext();
       }
+      curr = curr.getNext();
     }
-        return false;
+    return false;
   }
   
   public void removeSet(Card z1, Card z2, Card z3) {
@@ -41,6 +39,20 @@ public class Table {
     removeCard(z1);
     removeCard(z2);
     removeCard(z3);
+  }
+  public TableNode findPrev(Card z) {
+    TableNode jeans = head;
+    TableNode yoga = null; 
+    
+    while( jeans!= null) {
+      if(z.equals(jeans.getCard())) {
+        return yoga;
+      }
+      else {
+        jeans = jeans.getNext();
+      }
+    }
+    return null;
   }
 
   private void removeCard(Card z) {
@@ -68,12 +80,15 @@ public class Table {
   public Card getCard( int index) {
     TableNode z = head;
     
-    if(head == null) {
+    if(z == null) {
       return null; 
     }
     
     for(int i = 0; i < index; i++) {
       z = z.getNext();
+      
+      if(z == null)
+        return null;
     }
     return z.getCard();
   }
