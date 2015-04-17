@@ -38,46 +38,49 @@ public class Table
        ref = ref.getNext();
     }
     
-    if (removedCard1 == card1 && removedCard2 == card2 && removedCard3 == card3)
-    {
-      TableNode curr = head;
-      TableNode prev = null;
-      int prevNumCards = numCards();
-      
-      while (curr != null)
+    if (removedCard1 != null && removedCard2 != null && removedCard3 != null)
+    {  
+      if (removedCard1.equals(card1) && removedCard2.equals(card2) && removedCard3.equals(card3))
       {
-       if (curr.getCard().equals(card1) || curr.getCard().equals(card2) || curr.getCard().equals(card3))
-       {
-         if (curr == head)
-         {
-           prev = head;
-           head = head.getNext();
-           prev.setNext(null);
-           curr = head;
-           prev = null;
-         }
+        TableNode curr = head;
+        TableNode prev = null;
+        int prevNumCards = numCards();
+      
+        while (curr != null)
+        {
+          if (curr.getCard().equals(card1) || curr.getCard().equals(card2) || curr.getCard().equals(card3))
+          {
+            if (curr == head)
+            {
+              prev = head;
+              head = head.getNext();
+              prev.setNext(null);
+              curr = head;
+              prev = null;
+            }
          
-         else
-         {
-           prev.setNext(curr.getNext());
-           curr.setNext(null);
-         }
-       }
+            else
+            {
+              prev.setNext(curr.getNext());
+              curr.setNext(null);
+            }
+          }
+          
+          if (numCards() == 0)
+            return;
        
-       if (numCards() == 0)
-         return;
+          if (curr.getNext() == null && prev != null)
+            curr = prev.getNext();
+          
        
-       if (curr.getNext() == null && prev != null)
-         curr = prev.getNext();
-         
+          if (prevNumCards == numCards())
+          {
+            prev = curr;
+            curr = curr.getNext();
+          }
        
-       if (prevNumCards == numCards())
-       {
-         prev = curr;
-         curr = curr.getNext();
-       }
-       
-       prevNumCards = numCards();
+          prevNumCards = numCards();
+        }
       }
     }
     
