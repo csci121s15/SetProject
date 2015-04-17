@@ -28,11 +28,11 @@ public class Table
      
     while (ref != null)
     {
-     if (ref.getCard() == card1)
+     if (ref.getCard().equals(card1))
        removedCard1 = card1;
-     if (ref.getCard() == card2)
+     if (ref.getCard().equals(card2))
        removedCard2 = card2;
-     if (ref.getCard() == card3)
+     if (ref.getCard().equals(card3))
        removedCard3 = card3;
      
        ref = ref.getNext();
