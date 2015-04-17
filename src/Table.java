@@ -139,7 +139,7 @@ public class Table
           if (n1.getCard().isSet(n2.getCard(), n3.getCard()) == true)
             numSets += 1;
           
-          n3 =n3.getNext();
+          n3 = n3.getNext();
         }
         
         n2 = n2.getNext();
