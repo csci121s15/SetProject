@@ -46,7 +46,7 @@ public class Table
       
       while (curr != null)
       {
-       if (curr.getCard() == card1 || curr.getCard() == card2 || curr.getCard() == card3)
+       if (curr.getCard().equals(card1) || curr.getCard().equals(card2) || curr.getCard().equals(card3))
        {
          if (curr == head)
          {
