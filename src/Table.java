@@ -27,6 +27,8 @@ public class Table {
     return false;
   }
   private void removeCard(Card m){
+    if (head == null)
+    return;
     TableNode prev = null;
     TableNode curr = head;
     if (m.equals(head.getCard()))
