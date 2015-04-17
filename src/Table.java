@@ -33,19 +33,20 @@ public class Table {
   
   private void removeCard(Card card) {
     TableNode curr = head;
-    //deleting from the beginning of the list
-    if (card.equals(curr.getCard())) {
+    TableNode prev = null;
+    while (!card.equals(curr.getCard())) {
+      prev = curr;
       curr = curr.getNext();
     }
-    
-    //deleting from the end of the list
-    else if (!card.equals(curr.getCard())) {
-      for (int i = 0; i <= numCards()-1; i++)
-        curr.getNext();
-      curr.setNext(null);
+    if (curr == head) {
+      head = head.getNext();
+    }
+    else {
+      prev.setNext(curr.getNext());
     }
   }
-             
+      
+                       
   public void removeSet(Card c1, Card c2, Card c3) {
     boolean isSet = c1.isSet(c2, c3);
     boolean c1InList = cardInList(c1);
@@ -57,9 +58,6 @@ public class Table {
       removeCard(c2);
       removeCard(c3);
       
-    //else {
-        //return;
-      //}
     }
   }
   
