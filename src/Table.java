@@ -68,6 +68,10 @@ public class Table{
         }
       }
       
+      if (firstCard == null || secondCard == null || thirdCard == null) {
+        return;
+      }
+      
       //if all cards are on table variables will equal cards given in parameter
       if (card1.equals(firstCard) && card2.equals(secondCard) && card3.equals(thirdCard)) {
         int i = 0;
@@ -94,9 +98,12 @@ public class Table{
               }
             }
             else {
-              temp = temp.getNext();
-              if (prev != head){
-                prev=prev.getNext();
+              if (temp == head){
+                temp = temp.getNext();
+              }
+              else{
+                temp = temp.getNext();
+                prev = prev.getNext();
               }
             }
           }
@@ -104,8 +111,14 @@ public class Table{
           //for last card
           if (temp.getNext()==null) {
             if (card1.equals(temp.getCard()) || card2.equals(temp.getCard()) || card3.equals(temp.getCard())){
+              if (head.getNext()==null){
+                head=null;
+                i+=1;
+              }
+              else{
               prev.setNext(null);
               i+=1;
+              }
             }
             //might not need to be here
             else {
