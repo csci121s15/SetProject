@@ -25,6 +25,8 @@ public class Table
     Card removedCard1 = null;
     Card removedCard2 = null;
     Card removedCard3 = null;
+    
+    int removedCards = 0;
      
     while (ref != null)
     {
@@ -50,36 +52,43 @@ public class Table
         {
           if (curr.getCard().equals(card1) || curr.getCard().equals(card2) || curr.getCard().equals(card3))
           {
-            if (curr == head)
-            {
-              prev = head;
-              head = head.getNext();
-              prev.setNext(null);
-              curr = head;
-              prev = null;
+            if (removedCards == 3)
+              return;
+            
+              if (curr == head)
+              {
+                prev = head;
+                head = head.getNext();
+                prev.setNext(null);
+                curr = head;
+                prev = null;
+                
+                removedCards += 1;
+              }
+              
+              else
+              {
+                prev.setNext(curr.getNext());
+                curr.setNext(null);
+                
+                removedCards += 1;
+              }
             }
-         
-            else
+          
+            if (numCards() == 0)
+              return;
+       
+            if (curr.getNext() == null && prev != null)
+              curr = prev.getNext();
+          
+       
+            if (prevNumCards == numCards())
             {
-              prev.setNext(curr.getNext());
-              curr.setNext(null);
+              prev = curr;
+              curr = curr.getNext();
             }
-          }
-          
-          if (numCards() == 0)
-            return;
-       
-          if (curr.getNext() == null && prev != null)
-            curr = prev.getNext();
-          
-       
-          if (prevNumCards == numCards())
-          {
-            prev = curr;
-            curr = curr.getNext();
-          }
-       
-          prevNumCards = numCards();
+            
+            prevNumCards = numCards();
         }
       }
     }
