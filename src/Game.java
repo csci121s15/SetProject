@@ -1,48 +1,24 @@
 public class Game{
-  private Table t;
+  private Table t = new Table();
   private Deck d;
   
   public Game(){
     //begins with randomly generated deck of 12 cards
+    
+    //deleted:: Table t = new Table();
     Deck d = new Deck();
     for (int i = 0; i<12; i++){
-      d.getNext();
+      t.add(d.getNext());
     }
   }
   
   public Game(String filename){
     //loads specific deck
-    try {
-      String line;
-      BufferedReader infile = new BufferedReader(new FileReader(filename));
-      int position = 0;
-  
-      while((line = infile.readLine()) != null) {
-        // Blank lines might contain white space, so trim it off
-        line = line.trim();
-        
-        // ignore blank lines
-        if(line.length() == 0)
-          continue;
-        
-        // ignore comments
-        if(line.startsWith("#"))
-          continue;
-            
-        // a valid line contains 4 integers
-        StringTokenizer tokenizer = new StringTokenizer(line);
-        
-        int quantity = Integer.parseInt(tokenizer.nextToken());
-        int color = Integer.parseInt(tokenizer.nextToken());
-        int shading = Integer.parseInt(tokenizer.nextToken());
-        int shape = Integer.parseInt(tokenizer.nextToken());
-        
-        cards.add(new Card(quantity, color, shading, shape));
-        nextCardIndex = 0;
-      }
-    }
-    catch(Exception e) {
-      throw new RuntimeException("Error while reading file: " + e.toString());
+    
+    //deleted:: Table t = new Table();
+    Deck d = new Deck(filename);
+    for (int i = 0; i<12; i++){
+      d.getNext();
     }
   }
   
@@ -52,6 +28,7 @@ public class Game{
   }
   
   public int numCards(){
+    
     //returns number of cards on table which is 12 
     //or less if deck has lest than 12 cards
     return t.numCards();
