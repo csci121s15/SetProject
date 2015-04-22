@@ -1,12 +1,13 @@
 public class Game{
-  private Table t = new Table();
   private Deck d;
+  private Table t;
   
   public Game(){
     //begins with randomly generated deck of 12 cards
     
-    //deleted:: Table t = new Table();
-    Deck d = new Deck();
+    d = new Deck();
+    t = new Table();
+    
     for (int i = 0; i<12; i++){
       t.add(d.getNext());
     }
@@ -15,10 +16,15 @@ public class Game{
   public Game(String filename){
     //loads specific deck
     
-    //deleted:: Table t = new Table();
-    Deck d = new Deck(filename);
-    for (int i = 0; i<12; i++){
-      d.getNext();
+    d = new Deck(filename);
+    t = new Table();
+    
+    while (d.hasNext()){
+      t.add(d.getNext());
+      
+      if (t.numCards() == 12){
+        return;
+      }
     }
   }
   
@@ -62,17 +68,22 @@ public class Game{
     //      in this case cards are added like normal
     //      and the table remains short a few cards
 
-    
+    int sets = t.numSets();
 
     //1.)
-    if (t.numSets() == 0 && d.hasNext() == true){
+    if (sets == 0 && d.hasNext() == true){
       for (int i = 0; i < 3; i++){
+        if (d.hasNext() == false){
+         return;
+        }
         t.add(d.getNext());
       }
+      return;
     }
+    
     
     //2.)
-    else if (t.numSets() > 0 && d.hasNext() == true){ 
+    if (sets > 0 && d.hasNext() == true){ 
       //call the number of cards in the begining to make it quicker
       int numCards = t.numCards();
       //go through the table looking for the set
@@ -86,18 +97,24 @@ public class Game{
                   
             if (card1.isSet(card2,card3)) {
               t.removeSet(card1, card2, card3);
-              for (int p = 0; p < 3; p++){
+              
+              for (int p = 0; t.numCards() < 12; p++){
+                if (d.hasNext() == false){
+                  return;
+                }
                 t.add(d.getNext());
-              break;
               }
+              return;
             }
           }
         }
-      }
+       }
+      return;
     }
     
+    
     //3.)
-    else if (t.numCards() > 12 && t.numSets() > 0){
+    if (t.numCards() > 12 && sets > 0){
       //call the number of cards in the begining to make it quicker
       int numCards = t.numCards();
       //go through the table looking for the set
@@ -111,15 +128,16 @@ public class Game{
                   
             if (card1.isSet(card2,card3)) {
               t.removeSet(card1, card2, card3);
-              break;
+              return;
             }
           }
         }
       }
+      return;
     }
     
     //4.)
-    else if (t.numSets() > 0 && d.hasNext() == false){
+    if (sets > 0 && d.hasNext() == false){
       //call the number of cards in the begining to make it quicker
       int numCards = t.numCards();
       //go through the table looking for the set
@@ -133,19 +151,21 @@ public class Game{
                   
             if (card1.isSet(card2,card3)) {
               t.removeSet(card1, card2, card3);
-              break;
+              return;
             }
           }
         }
       }
+      return;
     }
     
     //5.)
-    else if (d.hasNext() == false && t.numSets() == 0){
-      isGameOver();
+    if (d.hasNext() == false && sets == 0){
+      return;
+      //isGameOver();
     }
     
-    //6.) may be a part of one of the previous
+    //6.) may work as of one of the previous
   }
   
   public boolean isGameOver(){

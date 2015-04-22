@@ -13,12 +13,28 @@ public class GameTest extends TestCase {
    * many "testSomething" methods in this class as you wish, and each
    * one will be called when running JUnit over this class.)
    */
-  public void testGame() {
+  public void test1RoundGame() {
     Game g = new Game();
+    
     assertEquals(g.numCards(), 12);
-    System.out.println(g.numSets());
     g.playRound();
-    System.out.println(g.numSets());
+    assertEquals(g.numCards(), 12);
+  }
+  
+  public void testWith81CardsDeck(){
+    Game g = new Game("81cards.txt");
+    
+    assertEquals(g.numCards(), 12);
+    g.playRound();
+    assertEquals(g.numCards(), 12);
+  }
+  
+  public void testWith3CardsDeck(){
+    Game g = new Game("3cards.txt");
+    
+    assertEquals(g.numCards(), 3);
+    g.playRound();
+    assertEquals(g.numCards(), 0);
   }
 
   
