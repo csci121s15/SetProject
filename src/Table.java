@@ -24,7 +24,7 @@ public class Table {
 
   }
   
-  private boolean onTable(Card theCard) {
+  private boolean theTable(Card theCard) {
     //Got a pointer from a friend in class//
     TableNode nerf = head;
     while (nerf != null) {
@@ -68,6 +68,7 @@ public class Table {
        
   
   public void removeSet(Card card1, Card card2, Card card3) {
+    //Worked with John Ferguson in lab 4/23 to fix Table//
     //If 3 cards don't form a set or if any of the cards are not on the table, return//
     //Otherwise: remove card1, card2, card3 preserving the relative order of the rest of the cards//
     //since I made a removeCard method, I was able to use it in the removeSet method to help remove the cards from the set//
@@ -78,15 +79,15 @@ public class Table {
      return;
    }
    
-   if (!onTable(card1)) {
+   if (!theTable(card1)) {
      return;
    }
    
-   if (!onTable(card2)) {
+   if (!theTable(card2)) {
      return;
    }
    
-   if (!onTable(card3)) {
+   if (!theTable(card3)) {
      return;
    }
    
