@@ -1,9 +1,8 @@
 public class Table {
   private TableNode head;
-  private int length;
+  private int amount;
   
   public Table() {
-    //initialize head
     head = null;
   }
   
@@ -47,7 +46,7 @@ public class Table {
       
   
   public void removeSet(Card m1, Card m2, Card m3) {
-    if(m1.isSet(m2, m3) == false)
+    if(m1.isSet (m2, m3) == false)
       return;
     if(!onTable(m1))
       return;
@@ -63,14 +62,15 @@ public class Table {
   
   public int numCards(){
     TableNode temp = head;
+    amount = 0;
     if(head == null)
       return 0;
     while(temp != null)
     {
-      length++;
+      amount++;
       temp = temp.getNext();
     }
-    return length;
+    return amount;
   }
   
   public Card getCard(int index) {
@@ -79,9 +79,9 @@ public class Table {
       return null;
     if(index < numCards())
     {
-      for(int i = 0; i<numCards();i++)
+      for(int i = 0; i<index; i++)
       {
-        curr.getNext();
+       curr = curr.getNext();
       }
       return curr.getCard();
     }
@@ -91,8 +91,8 @@ public class Table {
   
   public int numSets() {
     TableNode m = head;
-    TableNode mm = m.getNext();
-    TableNode mmm = mm.getNext();
+    TableNode mm = null;
+    TableNode mmm = null;
     int numSets = 0;
     
     while(m != null && m.getNext() != null && m.getNext().getNext() != null){
