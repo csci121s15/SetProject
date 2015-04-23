@@ -41,11 +41,11 @@ public class Card {
     return shape;
   }
   
-  public boolean isSet(Card cardX, Card cardY) {
-    if ((((quantity + cardX.getQuantity() + cardY.getQuantity()) % 3) == 0) &&
-      (((color + cardX.getColor() + cardY.getColor()) % 3) == 0) &&
-      (((shading + cardX.getShading() + cardY.getShading()) % 3) == 0) &&
-        (((shape + cardX.getShape() + cardY.getShape()) % 3) == 0)) {
+  public boolean isSet(Card c1, Card c2) {
+    if ((((quantity + c1.getQuantity() + c2.getQuantity()) % 3) == 0) &&
+      (((color + c1.getColor() + c2.getColor()) % 3) == 0) &&
+      (((shading + c1.getShading() + c2.getShading()) % 3) == 0) &&
+        (((shape + c1.getShape() + c2.getShape()) % 3) == 0)) {
       return true;
     }
     else {
