@@ -26,12 +26,13 @@ public class Table {
   
   private void removeCard(Card c) {
     TableNode prev = findPrev(c);
-    TableNode curr = prev.getNext();
     
     if (prev == null) // head remove
       head = head.getNext();
-    else // middle or tail remove
+    else {// middle or tail remove 
+      TableNode curr = prev.getNext();
       prev.setNext(curr.getNext());
+    }
   }
   
   private TableNode findPrev(Card c) {
