@@ -22,7 +22,7 @@ public class CardTest extends TestCase {
   
   // 1 1 1
   public void testSameSet() {
-    Card c = new Card(1, 1, 3, 1);
+    Card c = new Card(3, 2, 2, 1);
     Card c2 = new Card(1, 3, 1, 1);
     Card c3 = new Card(2, 1, 3, 1);
     
@@ -31,8 +31,8 @@ public class CardTest extends TestCase {
   
   // 1 2 3
   public void testRowSet() {
-    Card c = new Card(1, 1, 3, 3);
-    Card c2 = new Card(1, 2, 1, 1);
+    Card c = new Card(3, 1, 2, 3);
+    Card c2 = new Card(1, 2, 1, 2);
     Card c3 = new Card(2, 3, 3, 1);
     
     assertTrue(c.isSet(c2, c3));

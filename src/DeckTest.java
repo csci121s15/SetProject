@@ -9,6 +9,7 @@ public class DeckTest extends TestCase {
   }
   
   public void test0cards() {
+    //System.out.println(System.getProperty("user.dir"));
     Deck d = new Deck("0cards.dat");
     assertEquals(0, d.cards.size());
 //    System.out.println(d.cards);

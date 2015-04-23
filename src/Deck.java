@@ -7,7 +7,7 @@ import java.util.Collections;
 // instance variables must be named cards and nextCardIndex
 // for provided constructor to work.
 public class Deck {
-  public ArrayList<Card> cards;
+  private ArrayList<Card> cards;
   private int nextCardIndex;
   
   // Creates deck with 81 set cards shuffled
