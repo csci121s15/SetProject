@@ -38,38 +38,19 @@ public class Card {
     return Sh;
   }
   
-  public boolean isSet(Card card2, Card card3) {
-    int Qsum;
-    int Csum;
-    int Ssum;
-    int Shsum;
-    
-    Qsum = Q + card2.getQuantity() + card3.getQuantity();
-    if ((Qsum % 3) == 0) {
-      return true;
-    }
-    
-    Csum = C + card2.getColor() + card3.getColor();
-    if ((Csum % 3) == 0) {
-      return true;
-    }
-    
-    Ssum = S + card2.getShading() + card3.getShading();
-    if ((Ssum % 3) == 0) {
-      return true;
-    }
-    
-    Shsum = Sh + card2.getShape() + card3.getShape();
-    if ((Shsum % 3) == 0) {
+  public boolean isSet(Card card2, Card card3)
+    {
+    if(((Q + card2.getQuantity() + card3.getQuantity()) % 3 == 0) &&
+      ((C + card2.getColor() + card3.getColor()) % 3 == 0) &&
+      ((S + card2.getShading() + card3.getShading()) % 3 == 0) &&
+      ((Sh + card2.getShape() + card3.getShape()) % 3 == 0))
+    {
       return true;
     }
     
     else {
       return false;
     }
-    
-    
-   
   }
   
   public String toString() {

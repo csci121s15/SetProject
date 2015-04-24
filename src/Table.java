@@ -14,7 +14,7 @@ public class Table {
   private boolean onTable(Card c) {
     TableNode curr = head;
     while (curr != null) {
-      if (curr.getCard().toString().equals(c)) {
+      if (curr.getCard().equals(c)) {
         return true;
       }
       curr = curr.getNext();
@@ -34,6 +34,8 @@ public class Table {
       prev.setNext(curr.getNext());
     }
   }
+       
+  
   
   private TableNode findPrev(Card c1) {
     TableNode curr = head;
@@ -44,6 +46,7 @@ public class Table {
         return prev;
       }
       else {
+        prev = curr;
         curr = curr.getNext();
     }
   }
