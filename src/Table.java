@@ -101,17 +101,4 @@ public class Table {
     }
     return numSets;
   }
-  
-  public void findSet() {
-    for(int a = 0; a < numCards() - 2; a++) {
-      for(int b = a + 1; b < numCards() - 1; b++) {
-        for(int c = b + 1; c < numCards(); c++) {
-          if(getCard(a).isSet(getCard(b), getCard(c))) {
-            removeSet(getCard(a), getCard(b), getCard(c));
-            return;
-          }
-        }
-      }
-    }
-  }
 }

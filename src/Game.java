@@ -53,7 +53,7 @@ public class Game {
                 
     if(d.hasNext() && numCards() == 12 && numSets() > 0) {
       //remove one set and add 3 cards
-      t.findSet();
+      findSet();
       if(d.hasNext()) {
         //System.out.println("t1");
         t.add(d.getNext());
@@ -72,15 +72,28 @@ public class Game {
     if(numCards() > 12 && numSets() > 0) {
       //System.out.println("t4");
       //remove one set but don't add 3 cards
-      t.findSet();
+      findSet();
       return;
      }
     
     if(numSets() > 0 && d.hasNext() == false) {
-     //System.out.println("t5");
-     //remove one set
-     t.findSet();
-     return;
+      //System.out.println("t5");
+      //remove one set
+      findSet();
+      return;
+    }
+  }
+  
+  private void findSet() {
+    for(int a = 0; a < t.numCards() - 2; a++) {
+      for(int b = a + 1; b < t.numCards() - 1; b++) {
+        for(int c = b + 1; c < t.numCards(); c++) {
+          if(t.getCard(a).isSet(t.getCard(b), t.getCard(c))) {
+            t.removeSet(t.getCard(a), t.getCard(b), t.getCard(c));
+            return;
+          }
+        }
+      }
     }
   }
   
