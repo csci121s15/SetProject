@@ -10,7 +10,7 @@ public class Table {
     temp.setNext(head);
     head = temp;
   }
-    
+  
   public void removeSet(Card c1, Card c2, Card c3) {
     if (! c1.isSet(c2, c3)) {
       return;
@@ -31,8 +31,6 @@ public class Table {
     removeCard(c1);
     removeCard(c2);
     removeCard(c3);
-    
-    
   }
   
   public int numCards() {
@@ -54,12 +52,20 @@ public class Table {
     }
   return curr.getCard();
   }
-    
-  
-  
-  //public int numSets() {
-  
-  
+
+  public int numSets() {
+    int sumSets = 0;
+    for (int i = 0; i < numCards(); i++) {  
+      for (int j = i + 1; j < numCards(); j++) {   
+        for (int k = j + 1; k < numCards(); k ++) { 
+          if (getCard(i).isSet(getCard(j), getCard(k))) {
+            sumSets++;
+        }
+      }
+    }
+  }
+  return sumSets;
+}
   
   private boolean onTable(Card c) { 
     TableNode curr = head;

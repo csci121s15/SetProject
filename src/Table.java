@@ -70,7 +70,7 @@ public class Table {
   private boolean onTable(Card c) { 
     TableNode curr = head;
     while (curr != null) {
-      if (curr.getCard() == c) {
+      if (curr.getCard().equals(c)) {
         return true;
       }
       curr = curr.getNext();
@@ -91,11 +91,13 @@ public class Table {
   
   private TableNode findPrev(Card c) {
     TableNode curr = head;
+    TableNode prev = null;
     while (curr != null) {
-      if (curr.getNext().getCard() == c) {
-        return curr;
+      if (curr.getCard().equals(c)) {
+        return prev;
       }
       else {
+        prev = curr;
         curr = curr.getNext();
       }
     }

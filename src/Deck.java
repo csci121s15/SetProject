@@ -26,7 +26,6 @@ public class Deck {
       }
     }
    Collections.shuffle(cards);
-   
   }
             
   public Deck(String filename) {
