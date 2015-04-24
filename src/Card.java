@@ -76,7 +76,7 @@ public class Card{
     else if (quantity == 2) {
       quan = ("2");
     }
-    else {// (quantity == 3) {
+    else { // (quantity == 3)
       quan = ("3");
     }
     if (color == 1) {
@@ -85,7 +85,7 @@ public class Card{
     else if (color == 2) {
       col = ("G"); //green
     }
-    else{ //(color == 3) {
+    else{ //(color == 3)
       col = ("P"); //purple
     }
      if (shading == 1) {
@@ -94,7 +94,7 @@ public class Card{
     else if (shading == 2) {
       shad = ("T"); //striped/shaded
     }
-    else{// (shading == 3) {
+    else{ // (shading == 3)
       shad = ("S"); //solid/filled
     }
     if (shape == 1) {
@@ -103,7 +103,7 @@ public class Card{
     else if (shape == 2) {
       shap = ("D"); //diamond
     }
-    else{// (shading == 3) {
+    else{ // (shading == 3)
       shap = ("S"); //squiggle
     }
     String sequence = quan + col + shad + shap;

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 
 public class Deck {
-  // Implement the rest of this class yourself
   private int nextCardIndex = 0;
   private ArrayList<Card> cards = new ArrayList<Card>(81);
   
@@ -21,7 +20,6 @@ public class Deck {
         }
       }
     }
-    
     Collections.shuffle(cards);  
   }
   
@@ -52,8 +50,6 @@ public class Deck {
   }
   
   public Deck(String filename) {
-    //file is named 3cards.txt
-    //cards = new ArrayList<Card>(81);
     
     try {
       String line;

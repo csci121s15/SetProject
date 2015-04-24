@@ -162,10 +162,8 @@ public class Game{
     //5.)
     if (d.hasNext() == false && sets == 0){
       return;
-      //isGameOver();
     }
-    
-    //6.) may work as of one of the previous
+
   }
   
   public boolean isGameOver(){
@@ -180,11 +178,4 @@ public class Game{
     }
   }
   
-
-  
-  
-//end }
-  //notes:
-  //abstraction --- rely on methods of other classes
-  //// getCard from table and then isSet from card
 }
