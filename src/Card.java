@@ -30,7 +30,7 @@ public class Card {
      return color;
    }
    
-  public int getShade(){
+  public int getShading(){
    
      return shade;
    }
@@ -43,7 +43,7 @@ public class Card {
   public boolean isSet (Card cardM,Card cardMM){
      if (((((color + cardM.getColor() + cardMM.getColor()) % 3) == 0)) &&
      (((quantity + cardM.getQuantity() + cardMM.getQuantity()) % 3) == 0) &&
-     (((shade + cardM.getShade() + cardMM.getShade()) % 3) == 0) &&
+     (((shade + cardM.getShading() + cardMM.getShading()) % 3) == 0) &&
      (((shape + cardM.getShape() + cardMM.getShape()) % 3) == 0))
      {
       return true;
@@ -91,6 +91,14 @@ private int fixValue(int valueToFix) {
     else
       return valueToFix;
  }
+public boolean equals(Object obj) {
+    Card that = (Card)obj;
+    
+    return quantity == that.getQuantity() &&
+      color == that.getColor() &&
+      shade == that.getShading() &&
+      shape == that.getShape();
+}
 }
 
 
