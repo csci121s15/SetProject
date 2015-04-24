@@ -36,8 +36,8 @@ public class Game{
    if(isGameOver()){
     return; 
    } 
+   boolean setRemoved = false;
    if(numSets() != 0){
-     boolean setRemoved = false;
      int length = numCards();
      for(int i= 0; i < length; i++){
        if(setRemoved){
@@ -61,6 +61,9 @@ public class Game{
          }
        }
      }
+   }
+   if(setRemoved && numCards() >= 12){
+     return;
    }
 
    for(int i = 0; i < 3 && d.hasNext(); i++){
