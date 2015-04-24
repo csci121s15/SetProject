@@ -176,18 +176,4 @@ public class CardTest extends TestCase {
     assertEquals(card1.isSet(card2, card3), false);
   }
   
-  public void testEqualsMethod()
-  {
-    Card card1 = new Card(1, 1, 1, 1);
-    Card card2 = new Card(1, 1, 1, 1);
-    Card card3 = new Card(2, 2, 2, 2);
-    
-    assertTrue(card1.equals(card2));
-    assertTrue(card2.equals(card1));
-    assertFalse(card1.equals(card3));
-    assertFalse(card3.equals(card1));   
-    assertFalse(card2.equals(card3));
-    assertFalse(card3.equals(card2));
-  }
-  
 }

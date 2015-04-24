@@ -1,12 +1,13 @@
 public class Game{
-  private Table t = new Table();
-  private Deck d = new Deck();
+  private Deck d;
+  private Table t;
   
   public Game(){
     //begins with randomly generated deck of 12 cards
     
-    //deleted:: Table t = new Table();
-    Deck d = new Deck();
+    d = new Deck();
+    t = new Table();
+    
     for (int i = 0; i<12; i++){
       t.add(d.getNext());
     }
@@ -15,10 +16,15 @@ public class Game{
   public Game(String filename){
     //loads specific deck
     
-    //deleted:: Table t = new Table();
-    Deck d = new Deck(filename);
-    for (int i = 0; i<12; i++){
-      d.getNext();
+    d = new Deck(filename);
+    t = new Table();
+    
+    while (d.hasNext()){
+      t.add(d.getNext());
+      
+      if (t.numCards() == 12){
+        return;
+      }
     }
   }
   
@@ -67,6 +73,9 @@ public class Game{
     //1.)
     if (sets == 0 && d.hasNext() == true){
       for (int i = 0; i < 3; i++){
+        if (d.hasNext() == false){
+         return;
+        }
         t.add(d.getNext());
       }
       return;
@@ -88,15 +97,21 @@ public class Game{
                   
             if (card1.isSet(card2,card3)) {
               t.removeSet(card1, card2, card3);
-              for (int p = 0; p < 3; p++){
+              
+              for (int p = 0; t.numCards() < 12; p++){
+                if (d.hasNext() == false){
+                  return;
+                }
                 t.add(d.getNext());
-              return;
               }
+              return;
             }
           }
         }
-      }
+       }
+      return;
     }
+    
     
     //3.)
     if (t.numCards() > 12 && sets > 0){
@@ -118,6 +133,7 @@ public class Game{
           }
         }
       }
+      return;
     }
     
     //4.)
@@ -140,14 +156,16 @@ public class Game{
           }
         }
       }
+      return;
     }
     
     //5.)
     if (d.hasNext() == false && sets == 0){
-      isGameOver();
+      return;
+      //isGameOver();
     }
     
-    //6.) may be a part of one of the previous
+    //6.) may work as of one of the previous
   }
   
   public boolean isGameOver(){
