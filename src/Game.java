@@ -10,16 +10,16 @@ public class Game{
     }
   }
   
-  public Game(String stringName){
+  public Game(String filename){
     t = new Table();
-    d = new Deck(stringName);
+    d = new Deck(filename);
     
     while (d.hasNext() == true){
       t.add(d.getNext());
-    }
-    
-    if (t.numCards() == 12){
+      
+      if (t.numCards() > 11){
       return;
+      }
     }
   }
   
@@ -34,32 +34,26 @@ public class Game{
   public void playRound(){
     if (d.hasNext() == true && t.numSets() == 0){
       for (int i = 0; i < 3; i++){
-        if (d.hasNext() == false){
+        if (d.hasNext() == false)
           t.add(d.getNext());
         }
         return;
     }
   
-   if (d.hasNext() == true && t.numSets() != 0){
+   else if (d.hasNext() == true && t.numSets() != 0){
     for (int x = 0; x < t.numCards() - 2; x++){
       for (int y = x + 1; y < t.numCards() - 1; y++){
         for (int z = y + 1; z < t.numCards(); z++){
           if (t.getCard(x).isSet(t.getCard(y), t.getCard(z))){
             t.removeSet(t.getCard(x), t.getCard(y), t.getCard(z));
-            
-            while(t.numCards() < 12){
-              if (d.hasNext() == true){
-                t.add(d.getNext());
-              }
-              return;
+            return;
             }
            }
           }
          }
+    return;
         }
-       }
-      }
-     }    
+       }    
   
   public boolean isGameOver(){
     if (d.hasNext() == false && t.numSets() == 0){
