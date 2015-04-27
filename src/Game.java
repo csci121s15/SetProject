@@ -34,26 +34,39 @@ public class Game{
   public void playRound(){
     if (d.hasNext() == true && t.numSets() == 0){
       for (int i = 0; i < 3; i++){
-        if (d.hasNext() == false)
+        if (d.hasNext()){
           t.add(d.getNext());
         }
+      else{
         return;
+      }
     }
+  }
   
-   else if (d.hasNext() == true && t.numSets() != 0){
+   if (d.hasNext() && t.numSets() != 0){
     for (int x = 0; x < t.numCards() - 2; x++){
       for (int y = x + 1; y < t.numCards() - 1; y++){
         for (int z = y + 1; z < t.numCards(); z++){
           if (t.getCard(x).isSet(t.getCard(y), t.getCard(z))){
             t.removeSet(t.getCard(x), t.getCard(y), t.getCard(z));
-            return;
+            
+            if (t.numCards() < 12 && d.hasNext()) {
+                for (int o = 0; o < 3; o++) {
+                  if (d.hasNext()) {
+                    t.add(d.getNext());
+                  }
+                  else {
+                    return;
+                  }
+                }
+              }
+              return;
             }
-           }
           }
-         }
-    return;
         }
-       }    
+      }
+    }
+  } 
   
   public boolean isGameOver(){
     if (d.hasNext() == false && t.numSets() == 0){
