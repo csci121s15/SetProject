@@ -33,17 +33,24 @@ public class Game {
   }
   
   public void playRound() {
-    if (t.numSets() == 0 && d.hasNext()) {
+    if (t.numSets() == 0 && d.hasNext() && t.numCards() > 11) {
       for (int c = 0; c < 3; c++) {
         if (d.hasNext()) {
           t.add(d.getNext());
-        }
-        else {
-          return;
+        } 
+      }
+      return;
+    }
+    
+    if (t.numCards() == 0 && d.hasNext()) {
+      for (int c = 0; c < 12; c++) {
+        if (d.hasNext()) {
+          t.add(d.getNext());
         }
       }
-    }
-      
+      return;
+    }  
+    
     if (t.numSets() != 0) {
       for (int i = 0; i < (t.numCards() - 2); i++) {
         for (int j = i + 1; j < (t.numCards() - 1); j++) {
