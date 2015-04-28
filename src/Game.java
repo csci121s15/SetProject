@@ -67,7 +67,7 @@ public class Game{
       }
     }
   } 
-  
+  //f
   public boolean isGameOver(){
     if (d.hasNext() == false && t.numSets() == 0){
       return true;
