@@ -6,7 +6,7 @@ public class GameAverage
     double endingCards = 0;
     double beginningCards = 0;
     
-    for (int i = 0; i < 100000; i++)
+    for (int i = 0; i < 1000000; i++)
     {
       Game game = new Game();
       beginningCards += game.numCards();
@@ -20,8 +20,8 @@ public class GameAverage
       endingCards += game.numCards();
     }
    
-    System.out.println(beginningCards/100000);
-    System.out.println(beginningSets/100000);
-    System.out.println(endingCards/100000);
+    System.out.println(beginningCards/1000000);
+    System.out.println(beginningSets/1000000);
+    System.out.println(endingCards/1000000);
   }
 }
