@@ -67,7 +67,6 @@ public class Deck {
         return false;
       }
     }
-    //return hasNext();
  
    
   public Card getNext(){
