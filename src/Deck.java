@@ -2,14 +2,55 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
-  // Implement the rest of this class yourself
+  private ArrayList<Card> cards;
+  private int nextCardIndex;
   
-  public Deck(String filename) {
+  public Deck()
+  {
+    cards = new ArrayList<Card>(81);
+    nextCardIndex = 0;
+    
+    for (int i = 1; i < 4; i++)
+    {
+      for (int j = 1; j < 4; j++)
+      {
+        for (int k = 1; k < 4; k++)
+        {
+          for (int l = 1; l < 4; l++)
+          {
+            cards.add(new Card(i, j, k, l));
+          }
+        }
+      }
+    }
+ 
+    Collections.shuffle(cards);
+  }
+  
+  
+  public boolean hasNext()
+  {
+   return nextCardIndex < cards.size(); 
+  }
+  
+  public Card getNext()
+  {
+   if (hasNext() == false)
+     return null;
+   
+   nextCardIndex += 1;
+   return cards.get(nextCardIndex - 1);
+  }
+  
+  public Deck(String filename)
+  {
     cards = new ArrayList<Card>(81);
     
-    try {
+    try 
+    {
       String line;
       BufferedReader infile = new BufferedReader(new FileReader(filename));
       int position = 0;
@@ -38,7 +79,8 @@ public class Deck {
         nextCardIndex = 0;
       }
     }
-    catch(Exception e) {
+    catch(Exception e)
+    {
       throw new RuntimeException("Error while reading file: " + e.toString());
     }
   }
