@@ -25,19 +25,23 @@ public class Game {
   
   public void playRound() {
     
-    while (t.numSets() == 0){
-    for (int i = 0; i < t.numCards(); i++) {  
-      for (int j = i + 1; j < t.numCards(); j++) {   
-        for (int k = j + 1; k < t.numCards(); k ++) { 
+    
+    
+      for (int i = 0; i < t.numCards(); i++) {  
+      
+        for (int j = i + 1; j < t.numCards(); j++) {   
+        
+          for (int k = j + 1; k < t.numCards(); k ++) { 
+            while (t.numSets() == 1 ){
           
-          if (t.getCard(i).isSet(t.getCard(j), t.getCard(k))) {
+            if (t.getCard(i).isSet(t.getCard(j), t.getCard(k))) {
             
-            t.removeSet(t.getCard(i), t.getCard(j), t.getCard(k));
-            if(t.numCards() <= 9) {
-            t.add(d.getNext());
-            t.add(d.getNext());
-            t.add(d.getNext());
-            }
+              t.removeSet(t.getCard(i), t.getCard(j), t.getCard(k));
+              if(t.numCards() <= 9) {
+                t.add(d.getNext());
+                t.add(d.getNext());
+                t.add(d.getNext());
+                }
               }
             }
           }
