@@ -6,20 +6,17 @@ public class Table {
   }
   
   public void add(Card wifi) {
-    if ( head == null)
-      head = new TableNode(wifi);
-    else {
       TableNode temp = new TableNode(wifi);
       temp.setNext(head);
       head = temp;
     }
-  }
+  
   
   private boolean onTable(Card z) {
     TableNode curr = head;
     
     while(curr != null) {
-      if(curr.getCard().toString().equals(z)) {
+      if(curr.getCard().equals(z)) {
         return true;
       }
       curr = curr.getNext();
@@ -49,6 +46,7 @@ public class Table {
         return yoga;
       }
       else {
+        yoga = jeans;
         jeans = jeans.getNext();
       }
     }
@@ -56,13 +54,12 @@ public class Table {
   }
 
   private void removeCard(Card z) {
-    TableNode prev = null;
-    TableNode curr = head; 
+    TableNode prev = findPrev(z);
 
       if(prev == null)
       head = head.getNext();
     else {
-      
+      TableNode curr = prev.getNext();
       prev.setNext(curr.getNext());
     }
   }

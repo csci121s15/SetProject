@@ -38,8 +38,13 @@ public class Game {
         t.add(d.getNext());
       return;
     }
+    boolean foundSet = false;
      for( int i = 0; i < numCards() -2; i++) {
+        if(foundSet)
+         break;
       for(int j = i +1; j < numCards() -1; j++) {
+        if( foundSet)
+          break;
         for(int k = j +1; k < numCards(); k++) {
           Card wolverine = t.getCard(i);
           Card magneto = t.getCard(j);
@@ -47,20 +52,24 @@ public class Game {
           
           if (wolverine.isSet(magneto, professorx)) {
             t.removeSet(wolverine, magneto, professorx);
-          }
-          if (d.hasNext() == true && numCards() < 12) {
-            for( int w = 0; w < 3; w++) {
-              t.add(d.getNext());
-            }
-            return;
+            foundSet = true;
+            break;
           }
         }
       }
      }
+      if (d.hasNext() == true && numCards() < 12) {
+            for( int w = 0; w < 3; w++) {
+              if(d.hasNext() == true) {
+                
+              t.add(d.getNext());
+              }
+            }
+      }
   }
 
   public boolean isGameOver() {
-    if( t.numSets() == 0 && t.numCards() == 0) {
+    if( t.numSets() == 0 && d.hasNext() == false) {
       return true;
     }
     else {
