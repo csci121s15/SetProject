@@ -43,19 +43,4 @@ public class DeckTest extends TestCase {
     assertFalse(c.isSet(c2, c3));
   }
   
-  public void test81Cards() {
-    Deck d = new Deck();
-    Card c;
-    
-    Qsum = 0;
-    Csum = 0;
-    Ssum = 0;
-    Shsum = 0;
-    
-    while (hasNext() == true) {
-      
-    
-    
-  }
-  
 }
