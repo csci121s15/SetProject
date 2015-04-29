@@ -44,7 +44,7 @@ public class Game {
       return;
     }
     
-    if (t.numSets() > 0 && d.hasNext() == true) {
+    else if (t.numSets() > 0 && d.hasNext() == true) {
       for (int i = 0; i < t.numCards() - 2; i++) {
         for (int j = i + 1; j < t.numCards() - 1; j++) {
           for (int h = j + 1; h < t.numCards(); h++) {
@@ -58,7 +58,12 @@ public class Game {
             }
             
             if (numCards() < 12 && d.hasNext() == true) {
-              for (int e = 0; e < 3; e++) {
+              
+              while ( t.numCards() < 12) {
+                
+                if (d.hasNext() == false) {
+                  return;
+                }
                 t.add(d.getNext());
               }
               return;
@@ -67,6 +72,25 @@ public class Game {
         }
       }
     }
+    
+    else if (t.numSets() != 0 && d.hasNext() == false) {
+      for (int i = 0; i < t.numCards() - 2; i++) {
+        for (int j = i + 1; j < t.numCards() - 1; j++) {
+          for (int h = j + 1; h < t.numCards(); h++) {
+            
+            Card c1 = t.getCard(i);
+            Card c2 = t.getCard(j);
+            Card c3 = t.getCard(h);
+            
+            if (c1.isSet(c2,c3)) {
+              t.removeSet(c1,c2,c3);
+              return;
+            }
+          }
+        }
+      }
+    }
+    return;
   }
   
   public boolean isGameOver() {
