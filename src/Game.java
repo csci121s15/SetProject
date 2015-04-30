@@ -45,65 +45,44 @@ public class Game
   
   public void playRound()
   {
-    if(numCards() >12 && numSets() >=1)
+    if(numSets() >=1)
     {
-      for(int j = 0; j < 3; j++)
+      for(int j = 0; j < numCards()-2; j++)
       {
-        t.removeSet(t.getCard(j), t.getCard(j + 1), t.getCard(j + 2));
-      }
-      
-    }
-    if(numSets() >=1 && d.hasNext() != true)
-    {
-      for(int k = 0; k<3; k++)
-      {
-        t.removeSet(t.getCard(k), t.getCard(k + 1), t.getCard(k + 2));
-      }
-      isGameOver();
-    }
-    if(numSets() == 0 && d.hasNext() == true)
-    {
-      
-      for(int i = 0; i<3; i++)
-        t.add(d.getNext());
-      return;
-    }
-    //We start with 12 cards on the table and some cards in the deck and when we finish
-    //a round, we take a set away and then add more cards to the table
-    while(numSets() > 0)
-    {
-      for(int j = 0; j< numCards()-2; j++)
-      {
-      for(int k =  j + 1; k< numCards()-1; k++)
-       {
-        for(int z = k + 1; z< numCards(); z++)
+        for(int k = j + 1; k< numCards()-1; k++)
         {
-          Card i = t.getCard(j);
-          Card e = t.getCard(k);
-          Card o = t.getCard(z);
-          
-          if(i.isSet(e,o))
+          for(int x = k + 1; x< numCards(); x++)
           {
-            t.removeSet(i,e,o);
-          }
-          if(numCards() < 12 && d.hasNext() == true)
-          {
-            for(int m = 0; m<3; m++)
+            if(t.getCard(j).isSet(t.getCard(k), t.getCard(x)))
             {
-              t.add(d.getNext());
+              t.removeSet(t.getCard(j), t.getCard(k), t.getCard(x));
+              if(numCards() < 12)
+              {
+                for(int y = 0; y < 3 && d.hasNext(); y++)
+                {
+                  t.add(d.getNext());
+                }
+              }
+              return;
+              
             }
-            return;
           }
         }
       }
+      
     }
-    
-  }
+    if(numSets() == 0)
+    {
+      
+      for(int i = 0; i<3 && d.hasNext(); i++)
+        t.add(d.getNext());
+      return;
+    }
   }
   
   public boolean isGameOver()
   {
-    if(t.numCards() == 0 && numSets() == 0)
+    if(numSets() == 0 && !d.hasNext())
       return true;
     else
       return false;
