@@ -1,0 +1,9 @@
+import junit.framework.TestCase;
+public class CardTest extends TestCase {
+  public void testGetQuantity() {
+    Card card1 = new Card(6, 2, 5, 4);
+    
+    assertEquals(1, card1.getQuantity());
+  }
+}
+  

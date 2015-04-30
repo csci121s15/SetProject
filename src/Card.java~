@@ -56,7 +56,19 @@ public class Card {
     int shadingSum = shading + c2.getShading() + c3.getShading();
     int shapeSum = shape + c2.getShape() + c3.getShape();
     
-    if ((quanSum % 3 == 0) && (colorSum % 3 == 0) && (shadingSum % 3 == 0) && (shapeSum % 3 == 0)) {
+    if ((quanSum % 3 == 0) && (colorSum % 3 != 0) && (shadingSum % 3 != 0) && (shapeSum % 3 != 0)) {
+      return true;
+    }
+    else if ((quanSum % 3 != 0) && (colorSum % 3 == 0) && (shadingSum % 3 != 0) && (shapeSum % 3 != 0)) {
+      return true;
+    }
+    else if ((quanSum % 3 != 0) && (colorSum % 3 != 0) && (shadingSum % 3 == 0) && (shapeSum % 3 != 0)) {
+      return true;
+    }
+    else if ((quanSum % 3 != 0) && (colorSum % 3 != 0) && (shadingSum % 3 != 0) && (shapeSum % 3 == 0)) {
+      return true;
+    }
+    else if ((quanSum % 3 == 0) && (colorSum % 3 == 0) && (shadingSum % 3 == 0) && (shapeSum % 3 == 0)) {
       return true;
     }
     else {
