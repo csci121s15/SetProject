@@ -26,7 +26,6 @@ public class Game {
   }
   
   public void playRound(){
-    // Working with Conch on playround, very difficult
     if (t.numSets() == 0 && d.hasNext() == true) {
       for (int i = 0; i < 3; i++) {
         if(d.hasNext() == true) {
@@ -45,11 +44,12 @@ public class Game {
               
               while (t.numCards() < 12)
               {
-                if (d.hasNext() == true)
+                if (d.hasNext() == false)
                   return;
                 
                 t.add(d.getNext());
               }
+              return;
             }
           }
         }

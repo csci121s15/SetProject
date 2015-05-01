@@ -2,26 +2,26 @@ public class MonteCarloSim
 {  
   public static void main(String[] args)
   {
-    double nBeginingSets = 0;
-    double nEndSets = 0;
-    double nBeginCards = 0;
+    double nStartSets = 0;
+    double nEndingSets = 0;
+    double nCards = 0;
     
     for (int i = 0; i < 1000000; i++)
     {
       Game game = new Game();
-      nBeginCards += game.numCards();
-      nBeginingSets += game.numSets();
+      nCards += game.numCards();
+      nStartSets += game.numSets();
       
       while (!game.isGameOver())
       {
        game.playRound(); 
       }
       
-      nEndSets += game.numCards();
+      nEndingSets += game.numCards();
     }
    
-    System.out.println(nBeginingSets/1000000);
-    System.out.println(nEndSets/1000000);
-    System.out.println(nBeginCards/1000000);
+    System.out.println(nStartSets/1000000);
+    System.out.println(nEndingSets/1000000);
+    System.out.println(nCards/1000000);
   }
 }
