@@ -11,7 +11,7 @@ public class Deck {
    
    public Deck() { 
     
-    for ( int qty = 1; qty <= 3; qty ++) { 
+    for ( int quant = 1; quant <= 3; quant ++) { 
       
       for (int clr = 1; clr <= 3; clr ++) { 
         
@@ -19,11 +19,13 @@ public class Deck {
           
           for (int shp = 1; shp <=3; shp ++) { 
             
-            Card card = new Card(qty,clr,shd,shp); 
+            Card card = new Card(quant, clr, shd, shp); 
+            cards.add(card);
           } 
-        }  
+        } 
       } 
     }    
+    
     Collections.shuffle(cards); 
     
   }
@@ -33,18 +35,23 @@ public class Deck {
       if (nextCardIndex < cards.size()){ 
         return true; 
       } 
+      
       else { 
+        
         return false; 
       } 
+      
     }
     
     public Card getNext(){ 
      
     if (hasNext() == false){ 
+      
       return null; 
     } 
      
-    else{ 
+    else { 
+      
       nextCardIndex += 1; 
       return cards.get(nextCardIndex-1);
     }

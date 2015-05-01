@@ -1,89 +1,120 @@
 public class Card {
-
+  
   private int quantity;
   private int color;
   private int shading;
-  private int shape; 
-
-  public Card(int Quantity, int Color, int Shading, int Shape){
-
-    quantity = ((((Quantity % 3)+3)%3)+1);
-    color = ((((Color % 3)+3)%3)+1);
-    shading = ((((Shading % 3)+3)%3)+1);
-    shape = ((((Shape % 3)+3)%3)+1);
+  private int shape;
+  
+  
+  public Card(int quant, int clr, int shd, int shp) {
+    quantity = fixValue(quant);
+    color = fixValue(clr);
+    shading = fixValue(shd);
+    shape = fixValue(shp);
   }
-
+  
   public int getQuantity() {
-
     return quantity;
   }
-
-  public int getColor(){
-
+   
+  public int getColor() {
     return color;
   }
-
-  public int getShading(){
-
+  
+  public int getShading() {
     return shading;
   }
-
-  public int getShape(){
-
+  
+  public int getShape() {
     return shape;
   }
-
-  public boolean isSet(Card A, Card B) {
-
-    return 
-
-     (((quantity + A.getQuantity() + B.getQuantity()) % 3) == 0) &&
-     (((color + A.getColor() + B.getColor()) % 3) == 0) &&
-     (((shading + A.getShading() + B.getShading()) % 3) == 0) &&
-     (((shape + A.getShape() + B.getShape()) % 3) == 0);
+  
+  public boolean isSet(Card B, Card C) {
+    
+    if((B.getQuantity() + C.getQuantity() + quantity) % 3 == 0 && 
+       (B.getColor() + C.getColor() +color) % 3 == 0 &&
+       (B.getShading() + C.getShading() + shading) % 3 == 0 &&
+       (B.getShape() + C.getShape() + shape) % 3 == 0) {
+      
+      return true;
+    }
+    
+    else {
+      
+      return false;
+    }
+    
   }
- 
-  public String toString() {
+  
+  //Tried to do my own toString method but I couldn't figure it out. 
+  //So I did this code even though it's longer than I wanted it too.
+  
+    public String toString() {
+      
     String str = "";
+    
     str += quantity;
-    if(color == 1) {
+    
+    if (color == 1) {
       str += "R";
     }
-    if(color == 2) {
+    
+    if (color == 2) {
       str += "G";
     }
-    if(color == 3) {
+    
+    if (color == 3) {
       str += "P";
     }
-    if(shading == 1) {
+    
+    if (shading == 1) {
       str += "O";
     }
-    if(shading == 2) {
+    
+    if (shading == 2) {
       str += "T";
     }
-    if(shading == 3) {
+    
+    if (shading == 3) {
       str += "S";
     }
-    if(shape == 1) {
+    
+    if (shape == 1) {
       str += "O";
     }
-    if(shape == 2) {
+    
+    if (shape == 2) {
       str += "D";
     }
-    if(shape == 3) {
+    
+    if (shape == 3) {
       str += "S";
     }
+    
     return str;
+
   }
-
-  public boolean equals(Object obj){
-
-    Card that = (Card)obj;
+  //From class. Thanks to me!
+  private int fixValue(int valueToFix) {
+    
+    if(valueToFix < 1 || valueToFix > 3) {
       
+      return(((valueToFix % 3) + 3) % 3) + 1;
+    }
+    
+    else {
+      
+      return valueToFix;
+    }
+  }
+  
+  public boolean equals(Object obj) {
+    
+    Card that = (Card)obj;
+    
     return quantity == that.getQuantity() &&
       color == that.getColor() &&
       shading == that.getShading() &&
       shape == that.getShape();
   }
-
- } 
+}
